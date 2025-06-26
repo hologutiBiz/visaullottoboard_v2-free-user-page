@@ -1,36 +1,3 @@
-
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-header {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    background-color: #ff0000;
-}
-nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-#gamesNavigation {
-    /* display: none; */
-    list-style-type: none;
-
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-
 table {
     width: 490px;
     height: 100%;
@@ -40,8 +7,10 @@ table {
 }
 
 caption {
+    /* display: block; */
+    /* width: 100%; */
     /* color: #ff0000; */
-    font-size: 30px;
+    font-size: 20px;
 }
 
 th{
@@ -50,26 +19,26 @@ th{
     padding: 5px;
 }
 
-.year {
+/* .year {
     color: #000;
     text-align: center;
     border: 1px solid black;
     background-color: rgba(218, 165, 32, 0.025);
     font-weight: bolder;
-    font-size: 20px;
-}
+    font-size: 10px;
+} */
 
 td {
     border-top: 1px solid black;
     padding: 5px 0;
 }
-.line {
+/* .line {
     color: #ff0000;
     text-align: center;
     text-transform: uppercase;
     font-size: 20px;
     font-weight: bolder;
-}
+} */
 .serial-num {
     width: 25px;
     text-align: center;
@@ -78,9 +47,9 @@ td {
 .days{
     position: relative;
     color: #000;
+    width: 30px;
     border: 1px solid black;
     background-color: whitesmoke;
-    /* font-weight: bolder; */
 }
 
 .xMas-tree {
@@ -103,12 +72,12 @@ border-left: 1px solid red;
 .winning {
 color: blue;
 text-align: center;
-font-size: 25px;
+font-size: 23px;
 }
 .machine {
 color: red;
 text-align: center;
-font-size: 25px;
+font-size: 23px;
 }
 
 
@@ -222,3 +191,4 @@ font-size: 25px;
         }  
     }
   
+

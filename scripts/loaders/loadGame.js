@@ -10,6 +10,7 @@ const nav = document.getElementById('subnav');
 // 🧠 Detect game from filename (e.g. "1diamond")
 const slug = window.location.pathname.split('/').pop().replace('.html', '');
 const config = gameConfigs.find(cfg => cfg.slug === slug);
+
 if (!config) {
   container.innerHTML = `<p>Unknown game: ${slug}</p>`;
   throw new Error(`No config found for slug "${slug}"`);
