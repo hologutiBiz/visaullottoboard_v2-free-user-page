@@ -8,6 +8,16 @@
    <link rel="stylesheet" href="style.css">
    <link rel="stylesheet" href="/styles/tableStyles.css" />
   
+      <!-- email js -->
+   
+   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+   <script type="text/javascript">
+      (function(){
+         emailjs.init({
+         publicKey: "QysLPe_NPpvTICOe",
+         });
+      })();
+   </script>
 </head>
 <body>
    <header id="homePageHeader">
@@ -22,33 +32,57 @@
          <button id="reportBtn">📄 Report</button>
       </div>
 
-  <div class="socials">
+   <div class="socials">
     <!-- <a href="https://twitter.com/yourhandle" target="_blank">🐦</a>
     <a href="https://facebook.com/yourpage" target="_blank">📘</a>
     <a href="https://instagram.com/yourhandle" target="_blank">📸</a> -->
-    <a class="media" href="https://twitter.com/visuaLottoBoard" target="_blank" aria-label="connect on our X Page" rel="no-referrer">
-                    <i class="fa-brands fa-x-twitter" ></i>
-                  </a>
-                  <a class="media" href="https://www.facebook.com/visuaLottoBoard" target="_blank">
-                    <i class="fa-brands fa-facebook-f"></i>
-                  </a>
-                  <a class="media" href="https://m.me/109930914660224" target="_blank">
-                    <i class="fa-brands fa-facebook-messenger"></i>
-                  </a>
-                  <a class="media" href="#">
-                    <i class="fa-brands fa-instagram"></i>
-                  </a>
-                  <a class="media" href="http://www.youtube.com/@VisuaLottoBoard" target="_blank">
-                    <i class="fa-brands fa-youtube"></i>
-                  </a>
-  </div>
-</header>
+         <a class="media" href="https://twitter.com/visuaLottoBoard" target="_blank" aria-label="connect on our X Page" rel="no-referrer">
+            <i class="fa-brands fa-x-twitter" ></i>
+         </a>
+         <a class="media" href="https://www.facebook.com/visuaLottoBoard" target="_blank">
+            <i class="fa-brands fa-facebook-f"></i>
+         </a>
+         <a class="media" href="https://m.me/109930914660224" target="_blank">
+            <i class="fa-brands fa-facebook-messenger"></i>
+         </a>
+         <a class="media" href="#">
+            <i class="fa-brands fa-instagram"></i>
+         </a>
+         <a class="media" href="http://www.youtube.com/@VisuaLottoBoard" target="_blank">
+            <i class="fa-brands fa-youtube"></i>
+         </a>
+      </div>
+   </header>
 
-  <nav id="subnav"></nav>
+   <nav id="subnav"></nav>
 
-  <div id="statusMessage">Loading results. Please wait...</div>
-  <main id="homePageContainer"></main>
+   <div id="statusMessage">Loading results. Please wait...</div>
+   <main id="homePageContainer"></main>
 
-  <script type="module" src="/scripts/homeInit.js"></script>
+   <div id="reportModal" class="modal hidden">
+      <div class="modal-content">
+         <h2>Report an Issue</h2>
+
+         <div class="channel-options">
+            <a class="media" href="https://twitter.com/visuaLottoBoard" target="_blank" aria-label="connect on our X Page" rel="no-referrer">
+               <i class="fa-brands fa-x-twitter" ></i>
+            </a>
+            <a class="media" href="https://www.facebook.com/visuaLottoBoard" target="_blank">
+               <i class="fa-brands fa-facebook-f"></i>
+            </a>
+         </div>
+
+         <textarea id="reportMessage" placeholder="Describe the issue you encountered..."></textarea>
+
+         <div class="modal-actions">
+            <button id="sendReportBtn">Submit Report</button>
+            <button id="closeModalBtn">Cancel</button>
+         </div>
+      </div>
+   </div>
+
+
+   <script type="module" src="/scripts/homeInit.js"></script>
+   <script src="/scripts/modal.js"></script>
 </body>
 </html>

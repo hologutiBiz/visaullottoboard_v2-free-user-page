@@ -118,6 +118,49 @@ body.loading #statusMessage {
   cursor: pointer;
 }
 
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.5);
+  z-index: 9999;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 90%;
+}
+
+.channel-options a {
+  margin-right: 1rem;
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+
+textarea {
+  width: 100%;
+  min-height: 120px;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+
 footer {
    position: static;
    bottom: 0;

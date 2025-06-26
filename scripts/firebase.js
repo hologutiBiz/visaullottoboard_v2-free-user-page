@@ -2,11 +2,11 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
 import { getAuth, signInAnonymously, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
 
-// const firebaseConfig = {
-//   apiKey: "AIzaSyAe8IWoN0f4hhuzxvQ3aTSGKOzzDVuuvIk",
-//   authDomain: "lotto-forecast-web-db.firebaseapp.com",
-//   projectId: "lotto-forecast-web-db"
-// }
+const firebaseConfig = {
+  apiKey: "AIzaSyAe8IWoN0f4hhuzxvQ3aTSGKOzzDVuuvIk",
+  authDomain: "lotto-forecast-web-db.firebaseapp.com",
+  projectId: "lotto-forecast-web-db"
+}
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
