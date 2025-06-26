@@ -1,36 +1,48 @@
-export function renderGameResults(gameName, yearlyData, container) {
-   const title = document.createElement('h2');
-   title.textContent = `${gameName.toUpperCase()} Results`;
-   container.appendChild(title);
+export function renderGameResults(gameKey, yearlyData, container) {
+  const years = Object.keys(yearlyData).sort((a, b) => a - b);
 
-   Object.entries(yearlyData).forEach(([year, draws]) => {
-      const yearHeading = document.createElement('h3');
-      yearHeading.textContent = year;
-      container.appendChild(yearHeading);
+  years.forEach(year => {
+    const draws = yearlyData[year];
 
-      const table = document.createElement('table');
-      table.className = 'results-table';
+    const table = document.createElement('table');
+    table.innerHTML = `
+      <caption>${year}</caption>
+      <thead>
+        <tr>
+          <th class="serial-num">S/N</th>
+          <th>WEEK</th>
+          <th colspan="5">WINNING</th>
+          <th colspan="5">MACHINE</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    `;
 
-      table.innerHTML = `
-         <thead>
-            <tr>
-               <th>S/N</th>
-               <th>Week</th>
-               <th colspan="5">Winning</th>
-               <th colspan="5">Machine</th>
-            </tr>
-         </thead>
-         <tbody>
-         ${draws.map(draw => `
-            <tr>
-               <td>${draw.serialNumber}</td>
-               <td><small>${draw.date}</small></td>
-               ${draw.winningNumbers.map(n => `<td class="winning">${n.number}</td>`).join('')}
-               ${draw.machineNumbers.map(n => `<td class="machine">${n.number}</td>`).join('')}
-            </tr>
-         `).join('')}
-         </tbody>
+    const tbody = table.querySelector('tbody');
+
+    draws.forEach(draw => {
+      const winning = draw.winningNumbers
+        .map(n => `<td class="winning">${n.number || '—'}</td>`)
+        .join('');
+
+      const machine = draw.machineNumbers
+        .map((n, i) => {
+          const extra = i === 0 ? 'fbm' : '';
+          return `<td class="machine ${extra}">${n.number || '—'}</td>`;
+        })
+        .join('');
+
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td class="serial-num">${draw.serialNumber || '—'}</td>
+        <td class="days"><small>${draw.date || '—'}</small></td>
+        ${winning}
+        ${machine}
       `;
-      container.appendChild(table);
+
+      tbody.appendChild(row);
+    });
+
+    container.appendChild(table);
   });
 }

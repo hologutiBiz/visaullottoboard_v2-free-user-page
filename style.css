@@ -1,0 +1,55 @@
+#homePageContainer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .game-section {
+      flex: 1 1 500px;
+      max-width: 600px;
+      border: 1px solid #ccc;
+      padding: 1rem;
+      background: #fff;
+      border-radius: 8px;
+    }
+
+    #statusMessage {
+      text-align: center;
+      margin: 1rem auto;
+      font-weight: bold;
+    }
+
+    #subnav {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+    }
+
+    #subnav a {
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      background: #eee;
+      border-radius: 4px;
+    }
+    * {
+   margin: 0;
+   padding: 0;
+}
+
+#statusMessage {
+   color: #ff0000;
+   text-align: center;
+   margin: auto 0;
+   font-weight: 500;
+   font-size: 20px;
+}
+
+
+footer {
+   position: static;
+   bottom: 0;
+}
