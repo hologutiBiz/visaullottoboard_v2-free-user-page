@@ -2,6 +2,8 @@ import { auth } from '../firebase.js';
 import { fetchGameResults } from '../fetchResults.js';
 import { gameConfigs } from '../gameConfigs.js';
 import { renderGameResults } from '../renderGame.js';
+import { showError } from '../../utils/showError.js';
+
 
 const container = document.getElementById('gameContainer');
 const status = document.getElementById('statusMessage');
@@ -50,7 +52,14 @@ auth.onAuthStateChanged(async (user) => {
 
     renderGameResults(config.key, data, container);
   } catch (err) {
-    status.textContent = `Error loading ${config.label} results.`;
-    console.error('Game load error:', err.message);
+      if (!navigator.onLine) {
+        showError('No internet connection. Please check your network.');
+      } else if (err.message.includes('missing') || err.message.includes('API')) {
+        showError('Server error: Missing configuration. <a href="#" id="errorReportLink">[Report this error]</a>');
+      } else if (err.message.includes('fetchGameResults') || err.message.includes('endpoint')) {
+        showError('Server error: Unable to fetch results. <a href="#" id="errorReportLink">[Report this error]</a>');
+      } else {
+        showError('Something went wrong. <a href="#" id="errorReportLink">[Report this error]</a>');
+      }
   }
 });

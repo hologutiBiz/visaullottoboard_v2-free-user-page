@@ -201,3 +201,11 @@ footer {
 } */
 
 
+body.loading #statusMessage {
+  opacity: 1;
+}
+#errorReportLink {
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+}
