@@ -2,8 +2,13 @@
    margin: 0;
    padding: 0;
 }
+body {
+  position: relative;
+}
 
-#homePageHeader {
+.home-page-header {
+  position: sticky;
+  top: 0;
   color: #fff;
   display: flex;
   justify-content: space-between;
@@ -13,6 +18,7 @@
   margin-bottom: 3rem;
   background: #2282c7;
   border-bottom: 1px solid #ddd;
+  z-index: 1000;
 }
 .brand {
   display: flex;
@@ -36,10 +42,10 @@
   border-radius: 4px;
   cursor: pointer;
 }
-
 .actions button:hover {
   background: #004c99;
 }
+
 
 .socials a {
   color: #fff;
@@ -48,65 +54,50 @@
   text-decoration: none;
 }
 
-#homePageContainer {
-   display: flex;
-    flex-wrap: nowrap;
-    max-inline-size: 100%;
-    overflow-x: auto;
-    scroll-snap-type: inline mandatory;
-    scroll-behavior: smooth;
-}
 
-.game-section {
-  width: 550px;
+.subnav {
+  position: fixed;
+  display: flex;
+  width: 240px;
   height: 100%;
-
+  top: 0;
+  flex-direction: column;
+  align-items: first baseline;
+  flex-wrap: nowrap;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  max-block-size: 100%;
+  box-shadow: 2px 0 2px 0 rgba(51, 51, 51, 0.1);
+  overflow-y: auto;
+  scroll-snap-type: block mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  z-index: 2;
 }
-
-#statusMessage {
-  text-align: center;
-  margin: 1rem auto;
+.counterpart {
+  color: #daa520;
+  background-color: #000;
   font-weight: bold;
 }
-
-#subnav {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin: 1rem 0;
-  padding-bottom: 3rem;
-  flex-wrap: wrap;
-   box-shadow: 0 2px 2px 0 rgba(51, 51, 51, 0.1);
-}
-
-#subnav a {
-  text-decoration: none;
+.subnav a {
+  display: block;
+  width: 100%;
   padding: 0.5rem 1rem;
-  background: #eee;
+  margin: 0 0 5px;
   border-radius: 4px;
 }
- 
-#statusMessage {
-   color: #ff0000;
-   text-align: center;
-   margin: auto 0;
-   font-weight: 500;
-   font-size: 20px;
-}
-/* #statusMessage {
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
+.subnav a:hover {
+  color: #fff;
+  text-decoration: none; 
+  background: #2282c7; 
+  transition: 0.4s;
 
-body.loading #statusMessage {
-  opacity: 1;
-} */
-
-#subnav a.active {
+}
+.subnav a.active {
   background: #333;
   color: #fff;
 }
-#scrollTopBtn {
+.scrollTopBtn {
   position: fixed;
   bottom: 1.5rem;
   right: 1.5rem;
@@ -118,6 +109,32 @@ body.loading #statusMessage {
   cursor: pointer;
 }
 
+
+.status-message {
+  color: #ff0000;
+  text-align: center;
+  margin: auto 0;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.home-page-main {
+  display: flex;
+  flex-wrap: nowrap;
+  max-inline-size: 100%;
+  margin-left: 250px;
+  overflow-x: auto;
+  scroll-snap-type: inline mandatory;
+  scroll-behavior: smooth; 
+}
+
+.game-section {
+  width: 550px;
+  height: 100%;
+}
+
+
+/*...modal...*/
 .modal {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -127,11 +144,9 @@ body.loading #statusMessage {
   background: rgba(0,0,0,0.5);
   z-index: 9999;
 }
-
 .modal.hidden {
   display: none;
 }
-
 .modal-content {
   background: white;
   padding: 1.5rem;
@@ -139,13 +154,11 @@ body.loading #statusMessage {
   max-width: 500px;
   width: 90%;
 }
-
 .channel-options a {
   margin-right: 1rem;
   font-size: 1.25rem;
   text-decoration: none;
 }
-
 textarea {
   width: 100%;
   min-height: 120px;
@@ -153,59 +166,55 @@ textarea {
   padding: 0.5rem;
   font-size: 1rem;
 }
-
 .modal-actions {
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
 }
-
-
-footer {
-   position: static;
-   bottom: 0;
+.modal-actions button {
+  color: #fff;
+  width: 100px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
-
-
-/* table table table*/
-
-/* * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-} */
-
-/* header {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    background-color: #ff0000;
-} */
-/* nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
-/* #gamesNavigation { */
-    /* display: none; */
-    /* list-style-type: none;
-
-} */
-
-/* main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-} */
-
-
-body.loading #statusMessage {
-  opacity: 1;
+.send-report-btn {
+  background-color: green;
 }
+.close-modal-btn {
+  background-color: #ff0000;
+}/*...modal end...*/
+
+
 #errorReportLink {
   color: blue;
   cursor: pointer;
   text-decoration: underline;
+}
+
+
+/* On small screens: subnav takes over */
+@media (max-width: 768px) {
+  .subnav {
+    width: 100vw;
+    height: 100vh;
+    background: #fff;
+    z-index: 1000;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;  
+  }
+  .subnav::-webkit-scrollbar {
+    width: 6px;
+  }
+
+.subnav::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 3px;
+}
+
+  .homePageHeader {
+    display: none; /* Hide main while nav is active */
+  }
 }
