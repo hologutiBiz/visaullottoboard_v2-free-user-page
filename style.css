@@ -300,6 +300,7 @@ textarea {
   }
     .fortune  img {
       width: 64px;
+      display: none;
   }
    .fortune  img::after {
     content: "Click";
