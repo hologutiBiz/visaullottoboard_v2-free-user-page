@@ -261,7 +261,8 @@ textarea {
   .counterpart {
     all: unset;
 
-    /* background-color: transparent; */
+
+    background-color: transparent;
   }
   .counterpart:hover {
     all: unset;
@@ -306,6 +307,7 @@ textarea {
   
   .text.text {
     all: unset;
+    margin-top: 40px;
   }
   .text img {
     display: block;
@@ -315,6 +317,7 @@ textarea {
   }
   .text.text:hover {
     all: unset;
+    background-color: unset;
   }
 
   .home-page-main {
