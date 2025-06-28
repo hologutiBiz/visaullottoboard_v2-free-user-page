@@ -195,26 +195,117 @@ textarea {
 
 
 /* On small screens: subnav takes over */
-@media (max-width: 768px) {
+@media (max-width: 766px) {
+  .home-page-header {
+    flex-direction: column;
+  }
+  .actions {
+    display: flex;
+    width: 100%;
+    margin: 20px auto;
+  }
+    .actions button {
+      flex: 1 1 33.333%;
+      background-color: #f5f5dc36;
+      font-weight: bold;
+    }
+    .socials {
+      display: flex;
+      width: 100%;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .socials a {
+       margin: 20px auto; 
+       font-size: 22px;
+    }
+
   .subnav {
-    width: 100vw;
+    position: unset;
+    display: grid;
+    grid-column: 1fr;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: auto;
+    /* width: 100vw;
     height: 100vh;
     background: #fff;
     z-index: 1000;
     overflow-y: auto;
     scroll-behavior: smooth;
-    scrollbar-width: thin;  
+    scrollbar-width: thin;   */
   }
   .subnav::-webkit-scrollbar {
     width: 6px;
   }
 
-.subnav::-webkit-scrollbar-thumb {
-  background-color: #ccc;
-  border-radius: 3px;
+  .subnav::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 3px;
+  }
+  .subnav .counterpart {
+    width: 300px;
+    height: 400px;
+    text-decoration: none;
+    background-image: url("https://res.cloudinary.com/ddatfadov/image/upload/v1750558179/classification_378px_jrtub7.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  .subnav .counterpart:hover {
+    background-color: unset !important;
+  }
+  .subnav  .counterpart-span {
+    color: #add8e6;
+    display: block;
+    width: 320px;
+    height: 410px;
+    /* margin-right: 20px; */
+    /* padding: 8px 10px 5px 7px; */
+    background-color: #000000d8;
+    animation: disappear;
+  }
+  
+  .subnav a  {
+    /* grid-column: 300px !important; */
+    width: 300px;
+    height: 10rem;
+    text-align: center;
+    line-height: 10rem;
+    background-color: #00000011;
+    box-shadow: 0px 2px 2px 0px #2282c7;
+    margin: 10px auto;
+    font-size: 2rem;
+     opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.4s forwards;
+
+  }
+  .subnav a:nth-child(1) { animation-delay: 0.05s; }
+.subnav a:nth-child(2) { animation-delay: 0.1s; }
+/* and so on */
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-  .homePageHeader {
-    display: none; /* Hide main while nav is active */
+  .home-page-main {
+    display: none;
   }
+
+  @keyframes disappear {
+    25% {
+      transition: ease-out;
+      background-color: transparent;
+    }
+     50% {
+      transition: ease-in;
+      background-color: 000;
+    }
+  }
+ 
 }

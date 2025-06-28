@@ -39,7 +39,8 @@ auth.onAuthStateChanged(async (user) => {
       container.appendChild(section);
     });
   } catch (err) {
-      if (!navigator.onLine) {
+      if (err.message === "net::ERR_INTERNET_DISCONNECTED") {
+        // document.getElementById("statusMessage").textContent = `${showError()}`
         showError('No internet connection. Please check your network.');
       } else if (err.message.includes('missing') || err.message.includes('API')) {
         showError('Server error: Missing configuration. <a href="#" id="errorReportLink">[Report this error]</a>');
