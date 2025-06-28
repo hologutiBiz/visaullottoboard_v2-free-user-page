@@ -60,9 +60,8 @@
   top: 0;
   flex-direction: column;
   align-items: center;
-  flex-wrap: nowrap;
   padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-bottom: 5rem; 
   max-block-size: 100%;
   box-shadow: 2px 0 2px 0 rgba(51, 51, 51, 0.1);
   overflow-y: auto;
@@ -74,8 +73,10 @@
 .counterpart {
   color: #daa520;
   width: fit-content;
-  padding: 2px;
+  padding: 5px;
+  margin-top: 20px;
   background-color: #000;
+  border-radius: 5px;
   font-weight: bold;
 }
 .counterpart-icon {
@@ -84,17 +85,9 @@
 .game-nav-link-wrapper {
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
-  /* gap: 15px; */
-
   width: 100%;
-
-   flex-direction: column;
+  height: 100%;
   align-items: center;
-  flex-wrap: nowrap;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-
   max-block-size: 100%;
   box-shadow: 2px 0 2px 0 rgba(51, 51, 51, 0.1);
   overflow-y: auto;
@@ -103,18 +96,18 @@
   scrollbar-width: thin;
 }
 .game-nav-link {
-  flex: 1 1 0;
-  min-width: 0;
+  display: block;
+  color: #000;
+  width: 90%;
   text-align: center;
-  padding: 1rem;
-  text-decoration: none;
-  /* background: #eee; */
+  padding: 5px 0;
+  margin: 10px 5%;
 
 }
 .game-nav-link:hover {
-  /* color: #fff;
+  color: #fff;
   text-decoration: none; 
-  background: #2282c7;  */
+  background: #2282c7; 
   transition: 0.4s;
 
 }
@@ -122,6 +115,11 @@
   background: #333;
   color: #fff;
 }
+.game-nav-link img {
+  display: none;
+}
+
+
 .scrollTopBtn {
   position: fixed;
   bottom: 1.5rem;
@@ -251,72 +249,73 @@ textarea {
     height: 100%;
     margin: 0;
     overflow: auto;
+    background-color: #fff;
   }
   .subnav::-webkit-scrollbar {
     width: 6px;
   }
-
   .subnav::-webkit-scrollbar-thumb {
     /* background-color: #ccc; */
     border-radius: 3px;
   }
-  /* .counterpart {
-    width: 300px;
-    height: 400px;
-    background-image: url("https://res.cloudinary.com/ddatfadov/image/upload/v1750558179/classification_378px_jrtub7.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+  .counterpart {
+    all: unset;
+
+    /* background-color: transparent; */
   }
   .counterpart:hover {
-    background-color: #ff0000;
-  } */
+    all: unset;
+  } 
    
-   .counterpart p {
+  .counterpart p {
     display: none;
    }
-   .counterpart-icon {
-  display: block;
-}
-  /* .counterpart-span {
-    color: #add8e6;
+  .counterpart-icon {
     display: block;
-    width: 100%;
-    height: 100%;
-    
-    background-color: #000000d8;
-  } */
+}
+ 
   .counterpart:hover {
     background-color: unset;
   }
   .game-nav-link-wrapper {
-    display: grid;
-    
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto;
-
-   
-    }
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 3rem;
+    gap: 10px;
+  }
   .game-nav-link  {
-    color: #000;
-    width: 5rem;
-    display: block;
-   
-   
-    
+    color: #2282c7;
+    width: 10rem;
+    margin: 0;
+    padding: 20px 0;
+    background-color: #eee;
+    border-radius: 5px;
+    box-shadow: 2px 0 2px 0 rgba(51, 51, 51, 0.1);
+    font-weight: bold;  
   }
   .fortune  span {
-    display: none;
+    /* display: none; */
   }
     .fortune  img {
-      /* border-radius: 5px;
-        box-shadow: 2px 0 2px 0 rgba(51, 51, 51, 0.1); */
-
-      /* border: 1px solid #0066cc; */
+      width: 64px;
   }
    .fortune  img::after {
     content: "Click";
    }
+  
+  .text.text {
+    all: unset;
+  }
+  .text img {
+    display: block;
+  }
+  .text span {
+    display: none;
+  }
+  .text.text:hover {
+    all: unset;
+  }
 
   .home-page-main {
     display: none;
