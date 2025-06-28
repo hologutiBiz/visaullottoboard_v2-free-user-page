@@ -294,14 +294,12 @@ textarea {
     
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
-    /* background-color: #ff0000; */
 
    
     }
   .game-nav-link  {
     color: #000;
     width: 5rem;
-    /* grid-row: 1fr; */
     display: block;
    
    
@@ -311,11 +309,14 @@ textarea {
     display: none;
   }
     .fortune  img {
-      border-radius: 5px;
-        box-shadow: 2px 0 2px 0 rgba(51, 51, 51, 0.1);
+      /* border-radius: 5px;
+        box-shadow: 2px 0 2px 0 rgba(51, 51, 51, 0.1); */
 
       /* border: 1px solid #0066cc; */
   }
+   .fortune  img::after {
+    content: "Click";
+   }
 
   .home-page-main {
     display: none;
