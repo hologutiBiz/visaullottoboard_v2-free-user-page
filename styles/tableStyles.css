@@ -114,15 +114,13 @@ td {
             width: 400px;
             margin-block-start: 40px;
         }
-        /* .year {
-            font-weight: bold;
-            font-size: 17px;
-        } */
         .serial-num {
             width: 20px;
+            font-size: 8px;
         }
         .days {
             width: 10px;
+            font-size: 10px;
         }
         .winning,
         .machine {

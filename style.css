@@ -82,7 +82,7 @@
 .counterpart-icon {
   display: none;
 }
-.game-nav-link-wrapper {
+/* .game-nav-link-wrapper {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -94,12 +94,13 @@
   scroll-snap-type: block mandatory;
   scroll-behavior: smooth;
   scrollbar-width: thin;
-}
+} */
 .game-nav-link {
   display: block;
   color: #000;
   width: 90%;
   text-align: center;
+  text-align: justify;
   padding: 5px 0;
   margin: 10px 5%;
 
@@ -115,9 +116,9 @@
   background: #333;
   color: #fff;
 }
-.game-nav-link img {
+/* .game-nav-link img {
   display: none;
-}
+} */
 
 
 .scrollTopBtn {
