@@ -258,7 +258,7 @@ textarea {
     /* background-color: #ccc; */
     border-radius: 3px;
   }
-  .counterpart {
+  .counterpart.counterpart {
     all: unset;
 
 
@@ -305,7 +305,7 @@ textarea {
     content: "Click";
    }
   
-  .text.text {
+  /* .text.text {
     all: unset;
     margin-top: 40px;
   }
@@ -318,7 +318,7 @@ textarea {
   .text.text:hover {
     all: unset;
     background-color: unset;
-  }
+  } */
 
   .home-page-main {
     display: none;
