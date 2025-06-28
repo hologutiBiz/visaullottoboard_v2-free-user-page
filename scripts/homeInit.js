@@ -9,13 +9,13 @@ const status = document.getElementById('statusMessage');
 const nav = document.getElementById('subnav');
 
 // Build subnavbar (no Home link on homepage)
-gameConfigs.forEach(cfg => {
-  const link = document.createElement('a');
-  link.href = `/games/${cfg.slug}.html`;
-  link.textContent = cfg.label;
-  link.target = "_blank";
-  nav.appendChild(link);
-});
+// gameConfigs.forEach(cfg => {
+//   const link = document.createElement('a');
+//   link.href = `/games/${cfg.slug}.html`;
+//   link.textContent = cfg.label;
+//   link.target = "_blank";
+//   nav.appendChild(link);
+// });
 
 auth.onAuthStateChanged(async (user) => {
   if (!user) {

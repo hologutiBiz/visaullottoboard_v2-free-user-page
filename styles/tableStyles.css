@@ -7,9 +7,10 @@ table {
 }
 
 caption {
-    /* display: block; */
-    /* width: 100%; */
-    /* color: #ff0000; */
+    color: #fff;
+    width: 100%;
+    background-color: #2282c7;
+    font-weight: bold;
     font-size: 20px;
 }
 
@@ -19,26 +20,11 @@ th{
     padding: 5px;
 }
 
-/* .year {
-    color: #000;
-    text-align: center;
-    border: 1px solid black;
-    background-color: rgba(218, 165, 32, 0.025);
-    font-weight: bolder;
-    font-size: 10px;
-} */
-
 td {
     border-top: 1px solid black;
     padding: 5px 0;
 }
-/* .line {
-    color: #ff0000;
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 20px;
-    font-weight: bolder;
-} */
+
 .serial-num {
     width: 25px;
     text-align: center;
@@ -60,11 +46,11 @@ td {
     text-align: center;
 }
 
-#lbw {
+.lbw {
 border-right: 1px solid red;
 }
 
-#fbm {
+.fbm {
 border-left: 1px solid red;
 
 }
@@ -175,7 +161,6 @@ font-size: 23px;
         table {
             width: 300px;
             margin-block-start: 20px;
-
         }
         .year {
             font-weight: bold;

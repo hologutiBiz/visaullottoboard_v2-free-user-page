@@ -6,7 +6,7 @@ export function renderGameResults(gameKey, yearlyData, container) {
 
     const table = document.createElement('table');
     table.innerHTML = `
-      <caption>${year}</caption>
+      <caption class="game-year">${year}</caption>
       <thead>
         <tr>
           <th class="serial-num">S/N</th>

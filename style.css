@@ -59,7 +59,7 @@
   height: 100%;
   top: 0;
   flex-direction: column;
-  align-items: first baseline;
+  align-items: center;
   flex-wrap: nowrap;
   padding-top: 5rem;
   padding-bottom: 5rem;
@@ -73,24 +73,52 @@
 }
 .counterpart {
   color: #daa520;
+  width: fit-content;
+  padding: 2px;
   background-color: #000;
   font-weight: bold;
 }
-.subnav a {
-  display: block;
-  width: 100%;
-  padding: 0.5rem 1rem;
-  margin: 0 0 5px;
-  border-radius: 4px;
+.counterpart-icon {
+  display: none;
 }
-.subnav a:hover {
-  color: #fff;
+.game-nav-link-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  /* gap: 15px; */
+
+  width: 100%;
+
+   flex-direction: column;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+
+  max-block-size: 100%;
+  box-shadow: 2px 0 2px 0 rgba(51, 51, 51, 0.1);
+  overflow-y: auto;
+  scroll-snap-type: block mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+}
+.game-nav-link {
+  flex: 1 1 0;
+  min-width: 0;
+  text-align: center;
+  padding: 1rem;
+  text-decoration: none;
+  /* background: #eee; */
+
+}
+.game-nav-link:hover {
+  /* color: #fff;
   text-decoration: none; 
-  background: #2282c7; 
+  background: #2282c7;  */
   transition: 0.4s;
 
 }
-.subnav a.active {
+.subnav .game-nav-link.active {
   background: #333;
   color: #fff;
 }
@@ -192,34 +220,33 @@ textarea {
 
 
 /* On small screens: subnav takes over */
-@media (max-width: 766px) {
+@media (max-width: 768px) {
   .home-page-header {
     flex-direction: column;
+    margin-bottom: 0;
   }
   .actions {
     display: flex;
     width: 100%;
     margin: 20px auto;
   }
-    .actions button {
-      flex: 1 1 33.333%;
-      background-color: #f5f5dc36;
-      font-weight: bold;
-    }
-    .socials {
-      display: flex;
-      width: 100%;
-      justify-content: space-around;
-      align-items: center;
-    }
-    .socials a {
-       margin: 20px auto; 
-       font-size: 22px;
-    }
+  .actions button {
+    flex: 1 1 33.333%;
+    background-color: #f5f5dc36;
+    font-weight: bold;
+  }
+  .socials {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .socials a {
+      margin: 20px auto; 
+      font-size: 22px;
+  }
   .subnav {
     position: unset;
-    display: grid;
-    grid-column: 1fr;
     width: 100%;
     height: 100%;
     margin: 0;
@@ -230,10 +257,10 @@ textarea {
   }
 
   .subnav::-webkit-scrollbar-thumb {
-    background-color: #ccc;
+    /* background-color: #ccc; */
     border-radius: 3px;
   }
-  .counterpart {
+  /* .counterpart {
     width: 300px;
     height: 400px;
     background-image: url("https://res.cloudinary.com/ddatfadov/image/upload/v1750558179/classification_378px_jrtub7.jpg");
@@ -243,29 +270,51 @@ textarea {
   }
   .counterpart:hover {
     background-color: #ff0000;
-  }
-  .subnav  .counterpart-span {
+  } */
+   
+   .counterpart p {
+    display: none;
+   }
+   .counterpart-icon {
+  display: block;
+}
+  /* .counterpart-span {
     color: #add8e6;
     display: block;
     width: 100%;
     height: 100%;
     
-    /* margin: 0; */
     background-color: #000000d8;
-  }
-  .subnav .counterpart:hover {
+  } */
+  .counterpart:hover {
     background-color: unset;
   }
-  .subnav a  {
-    width: 300px;
-    height: 400px;
-    text-align: center;
-    line-height: 10rem;
-    background-color: #00000011;
-    box-shadow: 0px 2px 2px 0px #2282c7;
-    margin: 10px auto;
-    font-size: 2rem;
+  .game-nav-link-wrapper {
+    display: grid;
+    
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    /* background-color: #ff0000; */
 
+   
+    }
+  .game-nav-link  {
+    color: #000;
+    width: 5rem;
+    /* grid-row: 1fr; */
+    display: block;
+   
+   
+    
+  }
+  .fortune  span {
+    display: none;
+  }
+    .fortune  img {
+      border-radius: 5px;
+        box-shadow: 2px 0 2px 0 rgba(51, 51, 51, 0.1);
+
+      /* border: 1px solid #0066cc; */
   }
 
   .home-page-main {
