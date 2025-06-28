@@ -6,7 +6,7 @@ import { showError } from '../utils/showError.js';
 
 const container = document.getElementById('homePageContainer');
 const status = document.getElementById('statusMessage');
-const nav = document.getElementById('subnav');
+// const nav = document.getElementById('subnav');
 
 // Build subnavbar (no Home link on homepage)
 // gameConfigs.forEach(cfg => {

@@ -249,32 +249,27 @@ textarea {
     height: 100%;
     margin: 0;
     overflow: auto;
-    background-color: #fff;
+    background-color: #eee;
   }
   .subnav::-webkit-scrollbar {
     width: 6px;
   }
   .subnav::-webkit-scrollbar-thumb {
-    /* background-color: #ccc; */
     border-radius: 3px;
   }
   .counterpart.counterpart {
     all: unset;
-
-
     background-color: transparent;
   }
   .counterpart:hover {
     all: unset;
   } 
-   
   .counterpart p {
     display: none;
    }
   .counterpart-icon {
     display: block;
 }
- 
   .counterpart:hover {
     background-color: unset;
   }
@@ -290,7 +285,7 @@ textarea {
     width: 10rem;
     margin: 0;
     padding: 20px 0;
-    background-color: #ccc;
+    background-color: #fff;
     border-radius: 5px;
     box-shadow: 2px 0 2px 0 rgba(51, 51, 51, 0.1);
     font-weight: bold;  
