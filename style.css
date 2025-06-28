@@ -2,9 +2,6 @@
    margin: 0;
    padding: 0;
 }
-body {
-  position: relative;
-}
 
 .home-page-header {
   position: sticky;
@@ -219,7 +216,6 @@ textarea {
        margin: 20px auto; 
        font-size: 22px;
     }
-
   .subnav {
     position: unset;
     display: grid;
@@ -228,13 +224,6 @@ textarea {
     height: 100%;
     margin: 0;
     overflow: auto;
-    /* width: 100vw;
-    height: 100vh;
-    background: #fff;
-    z-index: 1000;
-    overflow-y: auto;
-    scroll-behavior: smooth;
-    scrollbar-width: thin;   */
   }
   .subnav::-webkit-scrollbar {
     width: 6px;
@@ -244,68 +233,43 @@ textarea {
     background-color: #ccc;
     border-radius: 3px;
   }
-  .subnav .counterpart {
+  .counterpart {
     width: 300px;
     height: 400px;
-    text-decoration: none;
     background-image: url("https://res.cloudinary.com/ddatfadov/image/upload/v1750558179/classification_378px_jrtub7.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
   }
-  .subnav .counterpart:hover {
-    background-color: unset !important;
+  .counterpart:hover {
+    background-color: #ff0000;
   }
   .subnav  .counterpart-span {
     color: #add8e6;
     display: block;
-    width: 320px;
-    height: 410px;
-    /* margin-right: 20px; */
-    /* padding: 8px 10px 5px 7px; */
+    width: 100%;
+    height: 100%;
+    
+    /* margin: 0; */
     background-color: #000000d8;
-    animation: disappear;
   }
-  
+  .subnav .counterpart:hover {
+    background-color: unset;
+  }
   .subnav a  {
-    /* grid-column: 300px !important; */
     width: 300px;
-    height: 10rem;
+    height: 400px;
     text-align: center;
     line-height: 10rem;
     background-color: #00000011;
     box-shadow: 0px 2px 2px 0px #2282c7;
     margin: 10px auto;
     font-size: 2rem;
-     opacity: 0;
-  transform: translateY(10px);
-  animation: fadeInUp 0.4s forwards;
 
   }
-  .subnav a:nth-child(1) { animation-delay: 0.05s; }
-.subnav a:nth-child(2) { animation-delay: 0.1s; }
-/* and so on */
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
   .home-page-main {
     display: none;
-  }
-
-  @keyframes disappear {
-    25% {
-      transition: ease-out;
-      background-color: transparent;
-    }
-     50% {
-      transition: ease-in;
-      background-color: 000;
-    }
   }
  
 }
