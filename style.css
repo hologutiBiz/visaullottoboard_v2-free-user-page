@@ -82,37 +82,28 @@
 .counterpart-icon {
   display: none;
 }
-/* .game-nav-link-wrapper {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  max-block-size: 100%;
-  box-shadow: 2px 0 2px 0 rgba(51, 51, 51, 0.1);
-  overflow-y: auto;
-  scroll-snap-type: block mandatory;
-  scroll-behavior: smooth;
-  scrollbar-width: thin;
-} */
-.game-nav-link {
-  display: block;
-  color: #000;
-  width: 90%;
-  text-align: center;
-  text-align: justify;
-  padding: 5px 0;
-  margin: 10px 5%;
 
-}
-.game-nav-link:hover {
-  color: #fff;
-  text-decoration: none; 
-  background: #2282c7; 
-  transition: 0.4s;
+ .game-links-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10rem;
+    gap: 0.75rem;
 
+ }
+.game-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    box-shadow: 2px 0 2px 0 rgba(51, 51, 51, 0.1);
+    color: #222;
+    transition: background 0.2s ease;
 }
-.subnav .game-nav-link.active {
+.game-link:hover {
+    background-color: #f0f0f0;
+}
+.game-link.active {
   background: #333;
   color: #fff;
 }
@@ -274,48 +265,31 @@ textarea {
   .counterpart:hover {
     background-color: unset;
   }
-  .game-nav-link-wrapper {
+  .game-links-wrapper {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 3rem;
-    gap: 10px;
+    margin: 5rem 2% auto;
   }
-  .game-nav-link  {
+  .game-link  {
+    flex-direction: column;
     color: #2282c7;
     width: 10rem;
     margin: 0;
-    padding: 20px 0;
+    padding: 30px 0;
     background-color: #fff;
     border-radius: 5px;
-    box-shadow: 2px 0 2px 0 rgba(51, 51, 51, 0.1);
     font-weight: bold;  
+    font-size: 24px;
   }
-  .fortune  span {
-    /* display: none; */
-  }
-    .fortune  img {
-      width: 64px;
-      display: none;
-  }
-   .fortune  img::after {
-    content: "Click";
-   }
-  
-  /* .text.text {
-    all: unset;
-    margin-top: 40px;
-  }
-  .text img {
-    display: block;
-  }
-  .text span {
-    display: none;
-  }
-  .text.text:hover {
-    all: unset;
-    background-color: unset;
-  } */
+.game-link:hover {
+  background-color: #e0e0e0;
+}
+.game-icon {
+  display: block;
+  font-size: 2rem;
+  line-height: 1;
+}
 
   .home-page-main {
     display: none;
