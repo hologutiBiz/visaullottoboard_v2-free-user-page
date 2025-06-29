@@ -9,7 +9,7 @@ export const gameConfigs = [
   {
     key: 'msp',
     label: 'Monday Special',
-    slug: '18msp.html',
+    slug: '18msp',
 },
   {
     key: 'lucky-g',
@@ -29,7 +29,7 @@ export const gameConfigs = [
   {
     key: 'bonanza',
     label: 'Bonanza',
-    slug: '22bonanza.html',
+    slug: '22bonanza',
 },
 {
     key: 'national',
@@ -39,7 +39,7 @@ export const gameConfigs = [
 {
     key: 'aseda',
     label: 'Aseda',
-    slug: '25aseda.html',
+    slug: '25aseda',
 },
 
 
