@@ -10,11 +10,12 @@ export const gameConfigs = [
     key: 'msp',
     label: 'Monday Special',
     slug: '18msp',
+    color: '#ff000', // optional for styling
   },
   {
     key: 'lucky_G',
     label: 'Lucky-G',
-    slug: '19lucky-G',
+    slug: '19luckyG',
   },
   {
     key: 'midweek',
