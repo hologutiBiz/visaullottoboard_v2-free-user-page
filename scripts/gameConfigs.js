@@ -10,18 +10,18 @@ export const gameConfigs = [
     key: 'msp',
     label: 'Monday Special',
     slug: '18msp',
-},
+  },
   {
-    key: 'lucky-g',
+    key: 'lucky_G',
     label: 'Lucky-G',
-    slug: '19lucky-g',
-},
-{
+    slug: '19lucky-G',
+  },
+  {
     key: 'midweek',
     label: 'Midweek',
     slug: '20midweek',
-},
-{
+  },
+  {
     key: 'fortune',
     label: 'Fortune',
     slug: '21fortune',
@@ -30,17 +30,17 @@ export const gameConfigs = [
     key: 'bonanza',
     label: 'Bonanza',
     slug: '22bonanza',
-},
-{
+  },
+  {
     key: 'national',
     label: 'National',
     slug: '24national',
-},
-{
+  },
+  {
     key: 'aseda',
     label: 'Aseda',
     slug: '25aseda',
-},
+  },
 
 
 
