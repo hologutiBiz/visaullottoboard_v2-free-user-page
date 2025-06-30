@@ -70,6 +70,15 @@
   scrollbar-width: thin;
   z-index: 2;
 }
+
+/* ~ ~ Dynamic nav link in Nav-link ~ ~ */
+.active {
+  color: #2282c7;
+  padding-right: 10px;
+  margin: auto 10px;
+  border-right: 1px solid #2282c7;
+}
+
 .counterpart {
   color: #daa520;
   width: fit-content;
@@ -126,11 +135,10 @@
 
 
 .status-message {
-  color: #ff0000;
+  /* color: #ff0000; */
   text-align: center;
-  margin: auto 0;
-  font-weight: 800;
-  font-size: 18px;
+  margin: 20px 0 auto;
+  font-size: 16px;
 }
 
 .home-page-main {
@@ -143,11 +151,22 @@
   scroll-behavior: smooth; 
 }
 
+
 .game-section {
   width: 550px;
   height: 100%;
+  text-align: center;
+}
+.game-section h2 {
+  text-align: center;
+  margin-bottom: 0;
 }
 
+#gameContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 /*...modal...*/
 .modal {
@@ -241,7 +260,13 @@ textarea {
     height: 100%;
     margin: 0;
     overflow: auto;
-    background-color: #eee;
+    /* background-color: #eee; */
+    background-image: url("https://i.postimg.cc/PqMJr2bW/Visual-Lotto-Board-1.png");
+    background-repeat:repeat-y;
+    /* background-position: center; */
+    background-size: cover;
+    /* background-attachment: scroll; */
+
   }
   .subnav::-webkit-scrollbar {
     width: 6px;
@@ -270,6 +295,9 @@ textarea {
     flex-wrap: wrap;
     justify-content: center;
     margin: 5rem 2% auto;
+    background-color: #0000008a;
+    width: 100%;
+    height: 100%;
   }
   .game-link  {
     flex-direction: column;

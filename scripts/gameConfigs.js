@@ -4,13 +4,11 @@ export const gameConfigs = [
     key: 'diamond',
     label: 'Diamond',
     slug: '1diamond',
-    color: '#fcd000', // optional for styling
   },
   {
     key: 'msp',
     label: 'Monday Special',
     slug: '18msp',
-    color: '#ff000', // optional for styling
   },
   {
     key: 'lucky_G',

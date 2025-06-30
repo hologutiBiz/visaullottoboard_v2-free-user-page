@@ -19,6 +19,12 @@
   <link rel="stylesheet" href="../style.css">
   <link rel="stylesheet" href="/styles/tableStyles.css" />
 
+   <style>
+      body {
+         text-align: center;
+      }
+     
+   </style>
 </head>
 <body>
 
@@ -62,7 +68,7 @@
    </header>
   <nav id="subnav"></nav>
 
-  <div id="statusMessage">Loading...</div>
+  <div class="status-message" id="statusMessage" aria-live="polite">Loading Bonanza results...</div>
   <main id="gameContainer"></main>
 
   <script type="module" src="/scripts/loaders/loadGame.js"></script>

@@ -19,11 +19,11 @@ if (!config) {
 }
 
 // 🔗 Build subnavbar with home + all games
-const homeLink = document.createElement('a');
-homeLink.href = '/';
-homeLink.setAttribute = "target_blank";
-homeLink.textContent = '🏠 Home';
-nav.appendChild(homeLink);
+// const homeLink = document.createElement('a');
+// homeLink.href = '/';
+// homeLink.setAttribute = "target_blank";
+// homeLink.textContent = '🏠 Home';
+// nav.appendChild(homeLink);
 
 gameConfigs.forEach(cfg => {
   const link = document.createElement('a');
@@ -52,6 +52,8 @@ auth.onAuthStateChanged(async (user) => {
 
     renderGameResults(config.key, data, container);
   } catch (err) {
+      status.textContent = '';
+
       if (!navigator.onLine) {
         showError('No internet connection. Please check your network.');
       } else if (err.message.includes('missing') || err.message.includes('API')) {
