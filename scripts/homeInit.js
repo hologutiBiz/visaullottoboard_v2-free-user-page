@@ -8,11 +8,23 @@ const container = document.getElementById('homePageContainer');
 const status = document.getElementById('statusMessage');
 // const nav = document.getElementById('subnav');
 
-// function buttonLink(subscribe, login) {
-//   const actionsBtn = document.querySelectorAll()
-//   const paymentPage = window.location.href = "https://lottoclassificationchart.visuallottoboard.com";
-//   const loginPage = window.location.href = "https://lottoclassificationchart.visuallottoboard.com";
-// } 
+function linkButton(subscribe, login) {
+  const paymentBtn = document.querySelector(".actions #subscribeBtn");
+  const loginBtn = document.querySelector(".actions #loginBtn");
+
+  if(paymentBtn) {
+    paymentBtn.addEventListener("click", () => {
+      window.location.href = "https://app.visuallottoboard.com/comformation";
+    })
+  }
+
+  if(loginBtn) {
+    loginBtn.addEventListener("click", () => {
+      window.location.href = "https://app.visuallottoboard.com/";
+    })
+  }
+}
+linkButton();
 // const payLink = window.location.href = "https://lottoclassificationchart.visuallottoboard.com";
 
 // Build subnavbar (no Home link on homepage)

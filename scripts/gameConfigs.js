@@ -11,6 +11,81 @@ export const gameConfigs = [
     slug: '2peoples',
   },
   {
+    key: 'bingo',
+    label: 'Bingo',
+    slug: '3bingo',
+  },
+  {
+    key: 'metro',
+    label: 'Metro',
+    slug: '4metro',
+  },
+  {
+    key: 'inter',
+    label: 'International',
+    slug: '5inter',
+  },
+  {
+    key: 'gold',
+    label: 'Gold',
+    slug: '6gold',
+  },
+  {
+    key: '06',
+    label: '06',
+    slug: '7O6',
+  },
+  {
+    key: 'jackpot',
+    label: 'Jackpot',
+    slug: '8jackpot',
+  },
+  {
+    key: 'clubmaster',
+    label: 'Clubmaster',
+    slug: '9clubmaster',
+  },
+  {
+    key: 'super',
+    label: 'Super',
+    slug: '10super',
+  },
+  {
+    key: 'tota',
+    label: 'Tota',
+    slug: '11tota',
+  },
+  {
+    key: 'mark_II',
+    label: 'Mark-II',
+    slug: '12mark-II',
+  },
+  {
+    key: 'vag',
+    label: 'Vag',
+    slug: '13vag',
+  },
+  {
+    key: 'enugu',
+    label: 'Enugu',
+    slug: '14enugu',
+  },
+  {
+    key: 'lucky',
+    label: 'Lucky',
+    slug: '15lucky',
+  },
+  {
+    key: 'fairchance',
+    label: 'Fairchance',
+    slug: '16fairchance',
+  },
+  {
+    key: 'royal',
+    label: 'Royal',
+    slug: '17royal',
+  },
+  {
     key: 'msp',
     label: 'Monday Special',
     slug: '18msp',
@@ -34,6 +109,11 @@ export const gameConfigs = [
     key: 'bonanza',
     label: 'Bonanza',
     slug: '22bonanza',
+  },
+  {
+    key: 'king',
+    label: 'Premier King',
+    slug: '23premierking',
   },
   {
     key: 'national',
