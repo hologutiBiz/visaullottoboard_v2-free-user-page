@@ -65,3 +65,21 @@ auth.onAuthStateChanged(async (user) => {
       }
   }
 });
+
+function linkButton(subscribe, login) {
+  const paymentBtn = document.querySelector(".actions #subscribeBtn");
+  const loginBtn = document.querySelector(".actions #loginBtn");
+
+  if(paymentBtn) {
+    paymentBtn.addEventListener("click", () => {
+      window.location.href = "https://app.visuallottoboard.com/comformation";
+    })
+  }
+
+  if(loginBtn) {
+    loginBtn.addEventListener("click", () => {
+      window.location.href = "https://app.visuallottoboard.com/";
+    })
+  }
+}
+linkButton();
