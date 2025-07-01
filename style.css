@@ -74,6 +74,7 @@
 /* ~ ~ Dynamic nav link in Nav-link ~ ~ */
 .active {
   color: #2282c7;
+  text-decoration: none;
   padding-right: 10px;
   margin: auto 10px;
   border-right: 1px solid #2282c7;
@@ -262,9 +263,9 @@ textarea {
     overflow: auto;
     /* background-color: #eee; */
     background-image: url("https://i.postimg.cc/PqMJr2bW/Visual-Lotto-Board-1.png");
-    background-repeat:repeat-y;
+    /* background-repeat:; */
     /* background-position: center; */
-    background-size: cover;
+    /* background-size: cover; */
     /* background-attachment: scroll; */
 
   }
@@ -276,19 +277,18 @@ textarea {
   }
   .counterpart.counterpart {
     all: unset;
-    background-color: transparent;
   }
-  .counterpart:hover {
-    all: unset;
-  } 
   .counterpart p {
     display: none;
    }
   .counterpart-icon {
     display: block;
+    margin-top: auto 0;
 }
   .counterpart:hover {
     background-color: unset;
+    all: unset;
+   
   }
   .game-links-wrapper {
     flex-direction: row;

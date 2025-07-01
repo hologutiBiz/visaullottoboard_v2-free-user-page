@@ -6,6 +6,11 @@ export const gameConfigs = [
     slug: '1diamond',
   },
   {
+    key: 'peoples',
+    label: 'Peoples',
+    slug: '2peoples',
+  },
+  {
     key: 'msp',
     label: 'Monday Special',
     slug: '18msp',

@@ -8,6 +8,13 @@ const container = document.getElementById('homePageContainer');
 const status = document.getElementById('statusMessage');
 // const nav = document.getElementById('subnav');
 
+// function buttonLink(subscribe, login) {
+//   const actionsBtn = document.querySelectorAll()
+//   const paymentPage = window.location.href = "https://lottoclassificationchart.visuallottoboard.com";
+//   const loginPage = window.location.href = "https://lottoclassificationchart.visuallottoboard.com";
+// } 
+// const payLink = window.location.href = "https://lottoclassificationchart.visuallottoboard.com";
+
 // Build subnavbar (no Home link on homepage)
 // gameConfigs.forEach(cfg => {
 //   const link = document.createElement('a');
