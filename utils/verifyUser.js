@@ -1,6 +1,6 @@
 async function verifySession() {
     try {
-      const response = await fetch("https://auth.visuallottoboard.com", {
+      const response = await fetch("https://auth.visuallottoboard.com/verifySession", {
         method: "GET",
         credentials: "include"
       });
