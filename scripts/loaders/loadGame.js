@@ -76,7 +76,7 @@ function linkButton(subscribe, login) {
 
   if(paymentBtn) {
     paymentBtn.addEventListener("click", () => {
-      window.location.href = "https://app.visuallottoboard.com/comformation";
+      window.location.href = "https://app.visuallottoboard.com/confirmation";
     })
   }
 

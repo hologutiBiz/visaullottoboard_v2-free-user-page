@@ -33,7 +33,7 @@ function linkButton(subscribe, login) {
 
   if(paymentBtn) {
     paymentBtn.addEventListener("click", () => {
-      window.location.href = "https://app.visuallottoboard.com/comformation";
+      window.location.href = "https://app.visuallottoboard.com/confirmation";
     })
   }
 
@@ -59,8 +59,8 @@ auth.onAuthStateChanged(async (user) => {
   if (!user) {
     // status.textContent = 'Not signed in. Please refresh.';
     status.innerHTML = `
-      Access denied to bots! <br>
-      If you are human, kinldy <a href="https://app.visuallottoboard.com/signup" style="color:#0077cc; font-weight:500;">Click here to sign up</a> & reload to view your results.
+      🤖 Sorry, bot access isn’t allowed.<br>
+      If you're human (and lucky), <a href="https://app.visuallottoboard.com/">sign in here</a> to unlock your game results.
     `;
     container.innerHTML = "";
     return;
