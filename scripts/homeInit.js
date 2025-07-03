@@ -12,6 +12,17 @@ if (!firstVisit) {
   localStorage.setItem('vlb_first_visit', 'true');
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+  const closeBannerBtn = document.querySelector('.close-banner-btn');
+  if (closeBannerBtn) {
+    closeBannerBtn.addEventListener('click', () => {
+      const banner = document.getElementById('firstTimeBanner');
+      if (banner) banner.classList.add('hidden');
+    });
+  }
+});
+
+
 const container = document.getElementById('homePageContainer');
 const status = document.getElementById('statusMessage');
 // const nav = document.getElementById('subnav');

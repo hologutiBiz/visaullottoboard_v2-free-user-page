@@ -35,8 +35,12 @@ gameConfigs.forEach(cfg => {
 
 auth.onAuthStateChanged(async (user) => {
   if (!user) {
-    status.textContent = 'Not signed in.';
-    return;
+    status.innerHTML = `
+    🔐 You must be signed in to view ${config.label} results.<br>
+    <a href="https://app.visuallottoboard.com/">Click here to sign up or log in</a>
+  `;
+  container.innerHTML = '';
+  return;
   }
 
   try {
