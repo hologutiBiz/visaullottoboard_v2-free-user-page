@@ -1,6 +1,6 @@
 async function verifySession() {
     try {
-      const response = await fetch("https://visual-lotto-board-auth-session-backend.onrender.com/setSession", {
+      const response = await fetch("https://auth.visuallottoboard.com", {
         method: "GET",
         credentials: "include"
       });
