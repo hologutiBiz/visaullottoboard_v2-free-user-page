@@ -94,3 +94,4 @@ auth.onAuthStateChanged(async (user) => {
       }
     }
 });
+

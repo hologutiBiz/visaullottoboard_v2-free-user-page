@@ -10,6 +10,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+window.auth = auth;
 
 // Enable persistent login
 setPersistence(auth, browserLocalPersistence)
@@ -29,3 +30,5 @@ onAuthStateChanged(auth, (user) => {
     console.log('🚫 No authenticated session found');
   }
 });
+
+
