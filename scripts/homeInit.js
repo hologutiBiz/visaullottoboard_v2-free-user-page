@@ -4,6 +4,14 @@ import { gameConfigs } from './gameConfigs.js';
 import { renderGameResults } from './renderGame.js';
 import { showError } from '../utils/showError.js';
 
+const firstVisit = localStorage.getItem('vlb_first_visit');
+
+if (!firstVisit) {
+  const banner = document.getElementById('firstTimeBanner');
+  banner?.classList.remove('hidden');
+  localStorage.setItem('vlb_first_visit', 'true');
+}
+
 const container = document.getElementById('homePageContainer');
 const status = document.getElementById('statusMessage');
 // const nav = document.getElementById('subnav');
@@ -38,7 +46,12 @@ linkButton();
 
 auth.onAuthStateChanged(async (user) => {
   if (!user) {
-    status.textContent = 'Not signed in. Please refresh.';
+    // status.textContent = 'Not signed in. Please refresh.';
+    status.innerHTML = `
+      Access denied to bots! <br>
+      If you are human, kinldy <a href="https://app.visuallottoboard.com/signup" style="color:#0077cc; font-weight:500;">Click here to sign up</a> & reload to view your results.
+    `;
+    container.innerHTML = "";
     return;
   }
 
