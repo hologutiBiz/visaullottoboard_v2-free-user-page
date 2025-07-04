@@ -188,7 +188,30 @@
       </div>
    </div>
 
-   <script src="utils/verifyUser.js"></script>
+   <!-- <script src="utils/verifyUser.js"></script> -->
+   <script>
+      async function verifySession() {
+         try {
+            const response = await fetch("https://auth.visuallottoboard.com/verifySession", {
+               method: "GET",
+               credentials: "include"
+            });
+
+            if (response.status === 200) {
+               const user = await response.json();
+               console.log("✅ Session verified:", user);
+               // Optionally show user name, email, etc.
+            } else {
+               throw new Error("Invalid session");
+            }
+         } catch (error) {
+            console.warn("Session check failed:", error);
+            console.log("Cookies:", document.cookie);
+         }
+      }
+
+      verifySession();
+   </script>
    <script type="module" src="/scripts/homeInit.js"></script>
    <script src="/scripts/modal.js"></script>
 </body>
