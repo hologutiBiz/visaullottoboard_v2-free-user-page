@@ -33,42 +33,51 @@ gameConfigs.forEach(cfg => {
   nav.appendChild(link);
 });
 
-auth.onAuthStateChanged(async (user) => {
-  if (!user) {
-    status.innerHTML = `
-    🔐 You must be signed in to view ${config.label} results.<br>
-    <a href="https://app.visuallottoboard.com/">Click here to sign up or log in</a>
-  `;
-  container.innerHTML = '';
-  return;
-  }
-
+// verification
+verifySession(); 
+async function verifySession() {
   try {
-    status.textContent = `Loading ${config.label} results...`;
-    const allResults = await fetchGameResults();
-    status.textContent = '';
+    const response = await fetch("https://auth.visuallottoboard.com/verifySession", {
+      method: "GET",
+      credentials: "include"
+    });
 
-    const data = allResults[config.key];
-    if (!data) {
-      container.innerHTML = `<p>No ${config.label} data found.</p>`;
-      return;
-    }
+    if (response.status === 200) {
+      const user = await response.json();
+      console.log("✅ Verified:", user);
+      status.textContent = `Loading ${config.label} results...`;
 
-    renderGameResults(config.key, data, container);
-  } catch (err) {
+      const allResults = await fetchGameResults();
       status.textContent = '';
 
-      if (!navigator.onLine) {
+      const data = allResults[config.key];
+      if (!data) {
+        container.innerHTML = `<p>No ${config.label} data found.</p>`;
+        return;
+      }
+
+      renderGameResults(config.key, data, container);
+    } else {
+      throw new Error("Not verified");
+    }
+  } catch (err) {
+     if (!navigator.onLine) {
         showError('No internet connection. Please check your network.');
       } else if (err.message.includes('missing') || err.message.includes('API')) {
         showError('Server error: Missing configuration. <a href="#" id="errorReportLink">[Report this error]</a>');
       } else if (err.message.includes('fetchGameResults') || err.message.includes('endpoint')) {
         showError('Server error: Unable to fetch results. <a href="#" id="errorReportLink">[Report this error]</a>');
       } else {
-        showError('Something went wrong. <a href="#" id="errorReportLink">[Report this error]</a>');
-      }
+          console.warn("Session error:", err);
+          container.innerHTML = '';
+          status.innerHTML = `
+            🔐 You must be signed in to view ${config.label} results.<br>
+            <a href="https://app.visuallottoboard.com/">Click here to sign up or log in</a>
+          `;
+    }
   }
-});
+}
+
 
 function linkButton(subscribe, login) {
   const paymentBtn = document.querySelector(".actions #subscribeBtn");

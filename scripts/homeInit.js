@@ -55,43 +55,45 @@ linkButton();
 //   nav.appendChild(link);
 // });
 
-auth.onAuthStateChanged(async (user) => {
-  // if (!user) {
-    // status.textContent = 'Not signed in. Please refresh.';
-  //   status.innerHTML = `
-  //     🤖 Sorry, bot access isn’t allowed.<br>
-  //     If you're human (and lucky), <a href="https://app.visuallottoboard.com/">sign in here</a> to unlock your game results.
-  //   `;
-  //   container.innerHTML = "";
-  //   return;
-  // }
 
+verifySession();
+async function verifySession() {
   try {
-    status.textContent = 'Loading results. Please wait...';
-    const allResults = await fetchGameResults();
-    status.textContent = '';
-
-    gameConfigs.forEach(cfg => {
-      const data = allResults[cfg.key];
-      if (!data) return;
-
-      const section = document.createElement('section');
-      section.classList.add('game-section');
-      section.innerHTML = `<h2>${cfg.label}</h2>`;
-      renderGameResults(cfg.key, data, section);
-      container.appendChild(section);
+    const response = await fetch("https://auth.visuallottoboard.com/verifySession", {
+      method: "GET",
+      credentials: "include"
     });
-  } catch (err) {
-      if (err.message === "net::ERR_INTERNET_DISCONNECTED") {
-        // document.getElementById("statusMessage").textContent = `${showError()}`
-        showError('No internet connection. Please check your network.');
-      } else if (err.message.includes('missing') || err.message.includes('API')) {
-        showError('Server error: Missing configuration. <a href="#" id="errorReportLink">[Report this error]</a>');
-      } else if (err.message.includes('fetchGameResults') || err.message.includes('endpoint')) {
-        showError('Server error: Unable to fetch results. <a href="#" id="errorReportLink">[Report this error]</a>');
-      } else {
-        showError('Something went wrong. <a href="#" id="errorReportLink">[Report this error]</a>');
-      }
+
+    if (response.status === 200) {
+      const user = await response.json();
+      console.log("✅ Verified:", user);
+      status.textContent = "Loading results. Please wait...";
+
+      const allResults = await fetchGameResults();
+      status.textContent = "";
+
+      gameConfigs.forEach(cfg => {
+        const data = allResults[cfg.key];
+        if(!data) return;
+
+        const section = document.createElement("section");
+        section.classList.add('game-section');
+        section.innerHTML = `<h2>${cfg.label}</h2>`;
+        renderGameResults(cfg.key, data, section);
+        container.appendChild(section);
+      });
+    } else {
+        throw new Error("Session not valid");
     }
-});
+  } catch (error) {
+    console.warn("Session failed:", error);
+    status.innerHTML = `
+      🤖 Sorry, bot access isn’t allowed.<br>
+      If you're human (and lucky), <a href="https://app.visuallottoboard.com/">sign in here</a> to view results.
+    `;
+    container.innerHTML = "";  
+  }
+}
+
+
 
