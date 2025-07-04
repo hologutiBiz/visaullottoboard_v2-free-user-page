@@ -5,7 +5,7 @@ import { getFirestore, doc, getDoc } from 'https://www.gstatic.com/firebasejs/10
 const db = getFirestore();
 const ref = doc(db, "messages", "lottoResultUpdates");
 
-const snapshot = await getDoc(ref);
+export const snapshot = await getDoc(ref);
 if (snapshot.exists()) {
    const data = snapshot.data();
 
