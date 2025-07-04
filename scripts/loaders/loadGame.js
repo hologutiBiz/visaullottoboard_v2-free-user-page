@@ -47,7 +47,7 @@ async function verifySession() {
   } catch (err) {
     console.warn("Session verification error:", err);
     if (err.message.includes("Failed to fetch")) {
-    showError("⚠️ We're having trouble connecting to the server that provides your lotto results. This is likely a technical issue on our end — not a bot problem. Please try again shortly.");
+    showError("⚠️ We're having trouble connecting to the server that provides your lotto results. This is likely a technical issue on our end.");
     return;
   }
     showError("🤖 Sorry, bot access isn’t allowed.<br>If you're human, <a href='https://app.visuallottoboard.com'>sign in here</a> to unlock your game results.");
