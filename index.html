@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
       <!-- Google Tag Manager -->
-         <!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+         <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-         })(window,document,'script','dataLayer','GTM-54JWWN2R');</script> -->
+         })(window,document,'script','dataLayer','GTM-54JWWN2R');</script>
       <!-- End Google Tag Manager -->
 
    
@@ -60,8 +60,8 @@
 
 
       <!-- Google Tag Manager (noscript) -->
-         <!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-54JWWN2R"
-            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
+         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-54JWWN2R"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- End Google Tag Manager (noscript) -->
    
    
@@ -164,7 +164,9 @@
    
    <div class="status-message" id="statusMessage">Loading results. Please wait...</div>
 
-   <main class="home-page-main" id="homePageContainer"></main>
+   <main class="home-page-main" id="homePageContainer">
+      
+   </main>
 
    <div id="reportModal" class="modal hidden">
       <div class="modal-content">
@@ -187,31 +189,36 @@
          </div>
       </div>
    </div>
+   <div id="loading-message">Checking your session…</div>
+<div id="bot-message" style="display:none;">
+  🤖 Sorry, bot access isn’t allowed.<br>
+  If you're human (and lucky), sign in here to unlock your game results.
+</div>
+<div id="results-container" style="display:none;">
+  <!-- Game results here -->
+</div>
 
-   <!-- <script src="utils/verifyUser.js"></script> -->
-   <script>
-      async function verifySession() {
-         try {
-            const response = await fetch("https://auth.visuallottoboard.com/verifySession", {
-               method: "GET",
-               credentials: "include"
-            });
+<script>
+  fetch("https://auth.visuallottoboard.com/verifySession", {
+    method: "GET",
+    credentials: "include"
+  }).then(res => {
+    document.getElementById("loading-message").style.display = "none";
+    
+    if (res.status === 200) {
+      document.getElementById("results-container").style.display = "block";
+    } else {
+      document.getElementById("bot-message").style.display = "block";
+    }
+  }).catch(err => {
+    console.error("Session verification failed:", err);
+    document.getElementById("loading-message").style.display = "none";
+    document.getElementById("bot-message").style.display = "block";
+  });
+</script>
 
-            if (response.status === 200) {
-               const user = await response.json();
-               console.log("✅ Session verified:", user);
-               // Optionally show user name, email, etc.
-            } else {
-               throw new Error("Invalid session");
-            }
-         } catch (error) {
-            console.warn("Session check failed:", error);
-            console.log("Cookies:", document.cookie);
-         }
-      }
 
-      verifySession();
-   </script>
+   
    <script type="module" src="/scripts/homeInit.js"></script>
    <script src="/scripts/modal.js"></script>
 </body>

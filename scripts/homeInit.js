@@ -56,15 +56,15 @@ linkButton();
 // });
 
 auth.onAuthStateChanged(async (user) => {
-  if (!user) {
+  // if (!user) {
     // status.textContent = 'Not signed in. Please refresh.';
-    status.innerHTML = `
-      🤖 Sorry, bot access isn’t allowed.<br>
-      If you're human (and lucky), <a href="https://app.visuallottoboard.com/">sign in here</a> to unlock your game results.
-    `;
-    container.innerHTML = "";
-    return;
-  }
+  //   status.innerHTML = `
+  //     🤖 Sorry, bot access isn’t allowed.<br>
+  //     If you're human (and lucky), <a href="https://app.visuallottoboard.com/">sign in here</a> to unlock your game results.
+  //   `;
+  //   container.innerHTML = "";
+  //   return;
+  // }
 
   try {
     status.textContent = 'Loading results. Please wait...';
