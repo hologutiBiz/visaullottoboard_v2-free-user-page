@@ -106,7 +106,7 @@ async function loadResults() {
       <center>
         ⚠️ We’re having trouble connecting to the server.<br><br>
         This is likely a technical issue on our end. Please try again shortly.<br><br>
-        Alternatively, use the <strong>Report button</strong> to inform us about this.
+        Alternatively, use the <strong>Report</strong> button to inform us about this.
       </center>
     `;
     container.innerHTML = "";
