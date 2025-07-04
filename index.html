@@ -93,7 +93,6 @@
    </header>
 
   
-
    <nav class="subnav" id="subnav">
       <a  class="counterpart" href="https://lottoclassificationchart.visuallottoboard.com/" target="_blank">
          <p class="counterpart-span">Classification chart</p>
@@ -160,7 +159,9 @@
    
    <div class="status-message" id="statusMessage">Loading results. Please wait...</div>
 
-   <main class="home-page-main" id="homePageContainer"></main>
+   <main class="home-page-main" id="homePageContainer">
+      <div class="update-meta" id="updateInfo" class="update-meta"></div>  
+   </main>
 
    <div id="reportModal" class="modal hidden">
       <div class="modal-content">
@@ -185,6 +186,7 @@
    </div>
 
    <script type="module" src="/scripts/homeInit.js"></script>
+   <script src="/scripts/firebase.js"></script>
    <script src="/scripts/modal.js"></script>
 </body>
 </html>

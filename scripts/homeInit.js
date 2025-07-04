@@ -3,6 +3,7 @@ import { gameConfigs } from './gameConfigs.js';
 import { renderGameResults } from './renderGame.js';
 import { showError } from '../utils/showError.js';
 
+const subnav = document.getElementById('subnav');
 const container = document.getElementById('homePageContainer');
 const status = document.getElementById('statusMessage');
 
@@ -24,6 +25,7 @@ loadResults();
 async function loadResults() {
   try {
     status.textContent = '🔄 Loading latest lotto results...';
+    if (subnav) subnav.style.display = "none";
 
     const allResults = await fetchGameResults();
 
@@ -46,7 +48,7 @@ async function loadResults() {
     status.textContent = '';
   } catch (err) {
     console.error("Fetch error:", err);
-    const subnav = document.getElementById('subnav');
+    // const subnav = document.getElementById('subnav');
 
     if (!navigator.onLine) {
       status.innerHTML = "📡 No internet connection detected.";
