@@ -94,6 +94,10 @@ async function loadResults() {
           🚧 We couldn't load the game results due to a server issue or network error. Please use the <strong>Report</strong> to inform us about this.
         </center>
       `;
+      container.innerHTML = "";
+    if (banner) banner.style.display = "none"; // 👈 hides firstTimeBanner gracefully
+    if (subnav) subnav.style.display = "none";
+    return;
     }
 
   // Detect network or server fetch failure
