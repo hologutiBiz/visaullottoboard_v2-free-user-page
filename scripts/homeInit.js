@@ -75,6 +75,8 @@ async function verifySession() {
 
       gameConfigs.forEach(cfg => {
         const data = allResults[cfg.key];
+        console.log("🧩 Checking:", cfg.key, "→ Data:", data);
+
         if(!data) return;
 
         const section = document.createElement("section");
@@ -95,6 +97,9 @@ async function verifySession() {
     container.innerHTML = "";  
   }
 }
+
+console.log("🧱 Container HTML:", container.innerHTML);
+
 
 
 
