@@ -6,12 +6,6 @@ import { showError } from '../utils/showError.js';
 const container = document.getElementById('homePageContainer');
 const status = document.getElementById('statusMessage');
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelector('.close-banner-btn')?.addEventListener('click', () => {
-    document.getElementById('firstTimeBanner')?.classList.add('hidden');
-  });
-});
-
 // 📬 Link buttons
 function linkButton() {
   document.querySelector("#subscribeBtn")?.addEventListener("click", () => {
@@ -52,7 +46,6 @@ async function loadResults() {
     status.textContent = '';
   } catch (err) {
     console.error("Fetch error:", err);
-    const banner = document.getElementById('firstTimeBanner');
     const subnav = document.getElementById('subnav');
 
     if (!navigator.onLine) {
@@ -64,7 +57,6 @@ async function loadResults() {
     }
 
     container.innerHTML = "";
-    if (banner) banner.style.display = "none";
     if (subnav) subnav.style.display = "none";
   }
 }
