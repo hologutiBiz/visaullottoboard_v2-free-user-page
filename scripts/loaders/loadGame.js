@@ -61,20 +61,20 @@ async function verifySession() {
       throw new Error("Not verified");
     }
   } catch (err) {
-     if (!navigator.onLine) {
-        showError('No internet connection. Please check your network.');
-      } else if (err.message.includes('missing') || err.message.includes('API')) {
-        showError('Server error: Missing configuration. <a href="#" id="errorReportLink">[Report this error]</a>');
-      } else if (err.message.includes('fetchGameResults') || err.message.includes('endpoint')) {
-        showError('Server error: Unable to fetch results. <a href="#" id="errorReportLink">[Report this error]</a>');
-      } else {
+    //  if (!navigator.onLine) {
+    //     showError('No internet connection. Please check your network.');
+    //   } else if (err.message.includes('missing') || err.message.includes('API')) {
+    //     showError('Server error: Missing configuration. <a href="#" id="errorReportLink">[Report this error]</a>');
+    //   } else if (err.message.includes('fetchGameResults') || err.message.includes('endpoint')) {
+    //     showError('Server error: Unable to fetch results. <a href="#" id="errorReportLink">[Report this error]</a>');
+    //   } else {
           console.warn("Session error:", err);
           container.innerHTML = '';
           status.innerHTML = `
             🔐 You must be signed in to view ${config.label} results.<br>
             <a href="https://app.visuallottoboard.com/">Click here to sign up or log in</a>
           `;
-    }
+    // }
   }
 }
 
