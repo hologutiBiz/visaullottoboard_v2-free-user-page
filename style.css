@@ -73,12 +73,13 @@
 
 /* ~ ~ Dynamic nav link in Nav-link ~ ~ */
 .active {
-  color: #fff;
+  color: #2282c7;
   text-decoration: none;
-  padding-right: 20px;
+  padding-right: 10px;
   margin: auto 10px;
-  background-color: #2282c7;
-  font-size: 2.5rem;
+  border-right: 1px solid #2282c7;
+  border-left: 1px solid #2282c7;
+
 }
 
 .counterpart {
