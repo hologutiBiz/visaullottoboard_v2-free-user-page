@@ -81,22 +81,28 @@ async function loadResults() {
 
     status.textContent = '';
   } catch (err) {
-    console.error("Failed to load results:", err);
-    showError("🚧 We couldn't load the game results due to a server issue or network error. Please try again later.");
-
-    console.warn("Session error:", err);
+      console.warn("Session error:", err);
 
     const banner = document.getElementById('firstTimeBanner');
     const subnav = document.getElementById('subnav');
     const status = document.getElementById('statusMessage');
+    
+    console.error("Failed to load results:", err);
+    if (err === "Error: fetch failed: 401") {
+      status.innerHTML = `
+        <center>
+          🚧 We couldn't load the game results due to a server issue or network error. Please use the <strong>Report</strong> to inform us about this.
+        </center>
+      `;
+    }
 
   // Detect network or server fetch failure
-  if (err.message.includes("Failed to fetch") || err.message.includes("CORS")) {
+  else if (err.message.includes("Failed to fetch") || err.message.includes("CORS") || ("401")) {
     status.innerHTML = `
       <center>
-      ⚠️ We’re having trouble connecting to the server.<br><br>
-      This is likely a technical issue on our end. Please try again shortly.<br><br>
-      Alternatively, use the <strong>use the Report button</strong> to inform us about this.
+        ⚠️ We’re having trouble connecting to the server.<br><br>
+        This is likely a technical issue on our end. Please try again shortly.<br><br>
+        Alternatively, use the <strong>Report button</strong> to inform us about this.
       </center>
     `;
     container.innerHTML = "";
