@@ -200,13 +200,19 @@
             if (response.status === 200) {
                const user = await response.json();
                console.log("✅ Session verified:", user);
-               // Optionally show user name, email, etc.
+
+                document.getElementById("homePageContainer").style.display = "block";
+      document.getElementById("statusMessage").textContent = "✅ You are verified. Loading results...";
+      document.getElementById("firstTimeBanner").style.display = "none";
             } else {
                throw new Error("Invalid session");
             }
          } catch (error) {
             console.warn("Session check failed:", error);
             console.log("Cookies:", document.cookie);
+            console.warn("Session check failed:", error);
+    document.getElementById("firstTimeBanner").classList.remove("hidden");
+    document.getElementById("statusMessage").textContent = "🚫 Session not found. Please log in to view results.";
          }
       }
 
