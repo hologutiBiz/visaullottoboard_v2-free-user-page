@@ -12,7 +12,7 @@ export async function fetchGameResults() {
     console.warn("⚠️ Firebase user not available, falling back to session cookie.");
   }
 
-  const res = await fetch('https://resultsapi.visuallottoboard.com/.netlify/functions/getResults', {
+  const res = await fetch('https://visual-lotto-board-results-file.netlify.app/.netlify/functions/getResults', {
     method: "GET",
     credentials: "include", // ✅ send cookies if available
     headers: {
