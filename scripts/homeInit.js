@@ -86,17 +86,21 @@ async function loadResults() {
 
     console.warn("Session error:", err);
 
-  const subnav = document.getElementById('subnav');
-  const status = document.getElementById('statusMessage');
+    const banner = document.getElementById('firstTimeBanner');
+    const subnav = document.getElementById('subnav');
+    const status = document.getElementById('statusMessage');
 
   // Detect network or server fetch failure
   if (err.message.includes("Failed to fetch") || err.message.includes("CORS")) {
     status.innerHTML = `
-      ⚠️ We’re having trouble connecting to the server.<br>
-      This is likely a technical issue on our end.<br>
-      Please try again shortly. Alternatively, use the <b>Report<b/> to inform us about this.
+      <center>
+      ⚠️ We’re having trouble connecting to the server.<br><br>
+      This is likely a technical issue on our end. Please try again shortly.<br><br>
+      Alternatively, use the <strong>use the Report button</strong> to inform us about this.
+      </center>
     `;
     container.innerHTML = "";
+    if (banner) banner.style.display = "none"; // 👈 hides firstTimeBanner gracefully
     if (subnav) subnav.style.display = "none";
     return;
   }
