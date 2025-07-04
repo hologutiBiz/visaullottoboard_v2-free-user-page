@@ -98,6 +98,10 @@
       </div>
    </header>
 
+   <div id="statusMessage" class="server-error">
+  ⚠️ Server unavailable. Please try again later.
+</div>
+
    <nav class="subnav" id="subnav">
       <a  class="counterpart" href="https://lottoclassificationchart.visuallottoboard.com/" target="_blank">
          <p class="counterpart-span">Classification chart</p>
@@ -188,36 +192,6 @@
       </div>
    </div>
 
-   <!-- <script src="utils/verifyUser.js"></script> -->
-   <script>
-      async function verifySession() {
-         try {
-            const response = await fetch("https://auth.visuallottoboard.com/verifySession", {
-               method: "GET",
-               credentials: "include"
-            });
-
-            if (response.status === 200) {
-               const user = await response.json();
-               console.log("✅ Session verified:", user);
-
-                document.getElementById("homePageContainer").style.display = "block";
-      document.getElementById("statusMessage").textContent = "✅ You are verified. Loading results...";
-      document.getElementById("firstTimeBanner").style.display = "none";
-            } else {
-               throw new Error("Invalid session");
-            }
-         } catch (error) {
-            console.warn("Session check failed:", error);
-            console.log("Cookies:", document.cookie);
-            console.warn("Session check failed:", error);
-    document.getElementById("firstTimeBanner").classList.remove("hidden");
-    document.getElementById("statusMessage").textContent = "🚫 Session not found. Please log in to view results.";
-         }
-      }
-
-      verifySession();
-   </script>
    <script type="module" src="/scripts/homeInit.js"></script>
    <script src="/scripts/modal.js"></script>
 </body>

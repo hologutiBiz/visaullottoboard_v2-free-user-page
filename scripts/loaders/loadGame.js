@@ -46,11 +46,12 @@ async function verifySession() {
     }
   } catch (err) {
     console.warn("Session verification error:", err);
-    status.innerHTML = `
-      🔐 You must be signed in to view ${config.label} results.<br>
-      <a href="https://app.visuallottoboard.com/">Click here to sign up or log in</a>
-    `;
-    container.innerHTML = '';
+    if (err.message.includes("Failed to fetch")) {
+    showError("⚠️ We're having trouble connecting to the server that provides your lotto results. This is likely a technical issue on our end — not a bot problem. Please try again shortly.");
+    return;
+  }
+    showError("🤖 Sorry, bot access isn’t allowed.<br>If you're human, <a href='https://app.visuallottoboard.com'>sign in here</a> to unlock your game results.");
+  container.innerHTML = "";
   }
 }
 
