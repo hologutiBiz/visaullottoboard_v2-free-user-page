@@ -6,22 +6,19 @@ import { showError } from '../utils/showError.js';
 const container = document.getElementById('homePageContainer');
 const status = document.getElementById('statusMessage');
 
-// 🎉 First visit logic
-const firstVisit = localStorage.getItem('vlb_first_visit');
-if (!firstVisit) {
+// 🎉 First-time visitor banner
+if (!localStorage.getItem('vlb_first_visit')) {
   document.getElementById('firstTimeBanner')?.classList.remove('hidden');
   localStorage.setItem('vlb_first_visit', 'true');
 }
 
-// ❌ Close banner
 document.addEventListener('DOMContentLoaded', () => {
-  const closeBannerBtn = document.querySelector('.close-banner-btn');
-  closeBannerBtn?.addEventListener('click', () => {
+  document.querySelector('.close-banner-btn')?.addEventListener('click', () => {
     document.getElementById('firstTimeBanner')?.classList.add('hidden');
   });
 });
 
-// 🔗 Subscribe & Login buttons
+// 📬 Link buttons
 function linkButton() {
   document.querySelector("#subscribeBtn")?.addEventListener("click", () => {
     window.location.href = "https://app.visuallottoboard.com/confirmation";
@@ -33,38 +30,17 @@ function linkButton() {
 }
 linkButton();
 
-// 🧠 Step 1: Verify session
-verifySession();
+// 🔄 Load results directly (no session validation)
+loadResults();
 
-async function verifySession() {
-  try {
-    const response = await fetch("https://auth.visuallottoboard.com/verifySession", {
-      method: "GET",
-      credentials: "include"
-    });
-
-    if (response.status === 200) {
-      const user = await response.json();
-      console.log("✅ Session verified:", user);
-      status.textContent = '✅ You are verified. Loading results...';
-      await loadResults();
-    } else {
-      throw new Error("Not verified");
-    }
-  } catch (err) {
-    console.warn("Session check failed:", err);
-    showError("🤖 Sorry, bot access isn’t allowed.<br>If you're human, <a href='https://app.visuallottoboard.com'>sign in here</a> to unlock your game results.");
-    container.innerHTML = "";
-  }
-}
-
-// 🧩 Step 2: Fetch and render results
 async function loadResults() {
   try {
+    status.textContent = '🔄 Loading latest lotto results...';
+
     const allResults = await fetchGameResults();
 
     if (!allResults || Object.keys(allResults).length === 0) {
-      showError("⚠️ No results found. Server may be temporarily offline.");
+      showError("⚠️ No results available at the moment. Please check back soon.");
       return;
     }
 
@@ -81,52 +57,20 @@ async function loadResults() {
 
     status.textContent = '';
   } catch (err) {
-      console.warn("Session error:", err);
-
+    console.error("Fetch error:", err);
     const banner = document.getElementById('firstTimeBanner');
     const subnav = document.getElementById('subnav');
-    const status = document.getElementById('statusMessage');
-    
-    console.error("Failed to load results:", err);
-    if (err === "Error: fetch failed: 401") {
-      status.innerHTML = `
-        <center>
-          🚧 We couldn't load the game results due to a server issue or network error. Please use the <strong>Report</strong> to inform us about this.
-        </center>
-      `;
-      container.innerHTML = "";
-    if (banner) banner.style.display = "none"; // 👈 hides firstTimeBanner gracefully
-    if (subnav) subnav.style.display = "none";
-    return;
+
+    if (!navigator.onLine) {
+      status.innerHTML = "📡 No internet connection detected.";
+    } else if (err.message.includes("403")) {
+      status.innerHTML = "🔒 Access to results is restricted. Try visiting from an approved page.";
+    } else {
+      status.innerHTML = "⚠️ Couldn’t load results due to a network or server issue.";
     }
 
-  // Detect network or server fetch failure
-  else if (err.message.includes("Failed to fetch") || err.message.includes("CORS") || ("401")) {
-    status.innerHTML = `
-      <center>
-        ⚠️ We’re having trouble connecting to the server.<br><br>
-        This is likely a technical issue on our end. Please try again shortly.<br><br>
-        Alternatively, use the <strong>Report</strong> button to inform us about this.
-      </center>
-    `;
     container.innerHTML = "";
-    if (banner) banner.style.display = "none"; // 👈 hides firstTimeBanner gracefully
+    if (banner) banner.style.display = "none";
     if (subnav) subnav.style.display = "none";
-    return;
-  }
-
-  // Fallback for actual session failure
-  status.innerHTML = `
-    🤖 Sorry, bot access isn’t allowed.<br>
-    If you're human, <a href='https://app.visuallottoboard.com'>sign in here</a> to unlock your game results.
-  `;
-  container.innerHTML = "";
-  if (subnav) subnav.style.display = "none";
   }
 }
-
-console.log("🧱 Container HTML:", container.innerHTML);
-
-
-
-

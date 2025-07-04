@@ -25,38 +25,12 @@ gameConfigs.forEach(cfg => {
   nav.appendChild(link);
 });
 
-// 🔐 Start session verification
-verifySession();
-
-async function verifySession() {
-  try {
-    const response = await fetch("https://auth.visuallottoboard.com/verifySession", {
-      method: "GET",
-      credentials: "include"
-    });
-
-    if (response.status === 200) {
-      const user = await response.json();
-      console.log("✅ Verified:", user);
-      status.textContent = `Loading ${config.label} results...`;
-
-      await loadSingleGame();
-    } else {
-      throw new Error("Session invalid");
-    }
-  } catch (err) {
-    console.warn("Session verification error:", err);
-    if (err.message.includes("Failed to fetch")) {
-    showError("⚠️ We're having trouble connecting to the server that provides your lotto results. This is likely a technical issue on our end.");
-    return;
-  }
-    showError("🤖 Sorry, bot access isn’t allowed.<br>If you're human, <a href='https://app.visuallottoboard.com'>sign in here</a> to unlock your game results.");
-  container.innerHTML = "";
-  }
-}
+// 🔁 Load game results directly (no session check)
+loadSingleGame();
 
 async function loadSingleGame() {
   try {
+    status.textContent = `Loading ${config.label} results...`;
     const allResults = await fetchGameResults();
     const data = allResults[config.key];
 
@@ -73,7 +47,7 @@ async function loadSingleGame() {
   }
 }
 
-// 📬 Subscribe & Login buttons
+// 📬 Subscribe & Login buttons (Optional UI links)
 function linkButton() {
   document.querySelector("#subscribeBtn")?.addEventListener("click", () => {
     window.location.href = "https://app.visuallottoboard.com/confirmation";

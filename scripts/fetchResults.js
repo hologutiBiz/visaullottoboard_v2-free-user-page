@@ -1,37 +1,62 @@
-import { auth } from './firebase.js';
-
 export async function fetchGameResults() {
-  let token = null;
-
   try {
-    const user = auth.currentUser;
-    if (user) {
-      token = await user.getIdToken();
+    const res = await fetch('https://visual-lotto-board-results-file.netlify.app/.netlify/functions/getResults', {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    });
+
+    // Detect network-level issue (res undefined or failed fetch)
+    if (!res) {
+      throw new Error("Network failure");
     }
+
+    // Detect server-side error
+    if (!res.ok) {
+      if (res.status === 403) {
+        throw new Error("Access denied");
+      } else if (res.status === 404) {
+        throw new Error("Results not found");
+      } else {
+        throw new Error(`Server error: ${res.status}`);
+      }
+    }
+
+    const data = await res.json();
+
+    if (!data || Object.keys(data).length === 0) {
+      displayErrorMessage("No results available at this time.");
+    }
+
+    return data;
+
   } catch (err) {
-    console.warn("⚠️ Firebase user not available, falling back to session cookie.");
+    // 🧠 Intelligent error messaging
+    let message = "An unknown error occurred.";
+
+    if (!navigator.onLine) {
+      message = "No internet connection.";
+    } else if (err.message.includes("Access denied")) {
+      message = "Access to results is restricted.";
+    } else if (err.message.includes("Results not found")) {
+      message = "Lotto results could not be found.";
+    } else if (err.message.includes("Server error")) {
+      message = "There’s a problem fetching results — please try again later.";
+    } else if (err.message.includes("Network failure")) {
+      message = "Network failure — check your connection.";
+    }
+
+    displayErrorMessage(message);
+    console.error("⚠️ Error:", err.message);
   }
+}
 
-  const res = await fetch('https://visual-lotto-board-results-file.netlify.app/.netlify/functions/getResults', {
-    method: "GET",
-    credentials: "include", // ✅ send cookies if available
-    headers: {
-      'Content-Type': 'application/json',
-      ...(token ? { Authorization: `Bearer ${token}` } : {})
-    },
-  });
-
-  if (!res.ok) {
-    throw new Error(`Fetch failed: ${res.status}`);
+// Helper to show message on the page
+function displayErrorMessage(msg) {
+  const container = document.getElementById('gamesContainer');
+  if (container) {
+    container.innerHTML = `<p class="error-message">${msg}</p>`;
   }
-
-  const data = await res.json();
-
-  if (!data) {
-    const message = document.createElement('p');
-    message.textContent = 'Lotto results couldn’t load. Check your connection or try again shortly.';
-    document.getElementById('gamesContainer')?.appendChild(message);
-  }
-
-  return data;
 }
