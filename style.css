@@ -3,26 +3,6 @@
    padding: 0;
 }
 
-.first-time-banner {
-  background-color: #ffeaa7;
-  color: #222;
-  padding: 10px 15px;
-  font-size: 16px;
-  border-bottom: 1px solid #ccc;
-  display: flex;
-  text-align: center;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.first-time-banner button.close-banner-btn {
-  background: none;
-  border: none;
-  font-size: 18px;
-  cursor: pointer;
-  color: #333;
-}
-
 .home-page-header {
   position: sticky;
   top: 0;
@@ -75,7 +55,7 @@
 .subnav {
   position: fixed;
   display: flex;
-  width: 240px;
+  width: 210px;
   height: 100%;
   top: 0;
   flex-direction: column;
@@ -137,9 +117,6 @@
   background: #333;
   color: #fff;
 }
-/* .game-nav-link img {
-  display: none;
-} */
 
 
 .scrollTopBtn {
@@ -156,7 +133,6 @@
 
 
 .status-message {
-  /* color: #ff0000; */
   text-align: center;
   margin: 20px 0 auto;
   font-size: 16px;
@@ -170,7 +146,7 @@
   display: flex;
   flex-wrap: nowrap;
   max-inline-size: 100%;
-  margin-left: 250px;
+  margin-left: 210px;
   overflow-x: auto;
   scroll-snap-type: inline mandatory;
   scroll-behavior: smooth; 

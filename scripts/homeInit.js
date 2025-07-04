@@ -6,12 +6,6 @@ import { showError } from '../utils/showError.js';
 const container = document.getElementById('homePageContainer');
 const status = document.getElementById('statusMessage');
 
-// 🎉 First-time visitor banner
-if (!localStorage.getItem('vlb_first_visit')) {
-  document.getElementById('firstTimeBanner')?.classList.remove('hidden');
-  localStorage.setItem('vlb_first_visit', 'true');
-}
-
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('.close-banner-btn')?.addEventListener('click', () => {
     document.getElementById('firstTimeBanner')?.classList.add('hidden');
