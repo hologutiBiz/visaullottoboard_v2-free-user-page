@@ -1,17 +1,26 @@
 import { auth } from './firebase.js';
 
 export async function fetchGameResults() {
-  const user = auth.currentUser;
-  const token = await user.getIdToken();
+  let token = null;
+
+  try {
+    const user = auth.currentUser;
+    if (user) {
+      token = await user.getIdToken();
+    }
+  } catch (err) {
+    console.warn("⚠️ Firebase user not available, falling back to session cookie.");
+  }
 
   const res = await fetch('https://visual-lotto-board-results-file.netlify.app/.netlify/functions/getResults', {
+    method: "GET",
+    credentials: "include", // ✅ send cookies if available
     headers: {
-      Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
+      ...(token ? { Authorization: `Bearer ${token}` } : {})
     },
   });
 
-  // Optional: check for HTTP error
   if (!res.ok) {
     throw new Error(`Fetch failed: ${res.status}`);
   }
