@@ -48,6 +48,7 @@ async function verifySession() {
       status.textContent = `Loading ${config.label} results...`;
 
       const allResults = await fetchGameResults();
+      console.log("🎯 All Results:", allResults);
       status.textContent = '';
 
       const data = allResults[config.key];

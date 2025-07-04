@@ -70,6 +70,7 @@ async function verifySession() {
       status.textContent = "Loading results. Please wait...";
 
       const allResults = await fetchGameResults();
+      console.log("🎯 All Results:", allResults);
       status.textContent = "";
 
       gameConfigs.forEach(cfg => {
