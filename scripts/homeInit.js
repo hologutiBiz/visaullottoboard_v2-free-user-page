@@ -1,62 +1,41 @@
-import { auth } from './firebase.js';
 import { fetchGameResults } from './fetchResults.js';
 import { gameConfigs } from './gameConfigs.js';
 import { renderGameResults } from './renderGame.js';
 import { showError } from '../utils/showError.js';
 
-const firstVisit = localStorage.getItem('vlb_first_visit');
+const container = document.getElementById('homePageContainer');
+const status = document.getElementById('statusMessage');
 
+// 🎉 First visit logic
+const firstVisit = localStorage.getItem('vlb_first_visit');
 if (!firstVisit) {
-  const banner = document.getElementById('firstTimeBanner');
-  banner?.classList.remove('hidden');
+  document.getElementById('firstTimeBanner')?.classList.remove('hidden');
   localStorage.setItem('vlb_first_visit', 'true');
 }
 
+// ❌ Close banner
 document.addEventListener('DOMContentLoaded', () => {
   const closeBannerBtn = document.querySelector('.close-banner-btn');
-  if (closeBannerBtn) {
-    closeBannerBtn.addEventListener('click', () => {
-      const banner = document.getElementById('firstTimeBanner');
-      if (banner) banner.classList.add('hidden');
-    });
-  }
+  closeBannerBtn?.addEventListener('click', () => {
+    document.getElementById('firstTimeBanner')?.classList.add('hidden');
+  });
 });
 
+// 🔗 Subscribe & Login buttons
+function linkButton() {
+  document.querySelector("#subscribeBtn")?.addEventListener("click", () => {
+    window.location.href = "https://app.visuallottoboard.com/confirmation";
+  });
 
-const container = document.getElementById('homePageContainer');
-const status = document.getElementById('statusMessage');
-// const nav = document.getElementById('subnav');
-
-function linkButton(subscribe, login) {
-  const paymentBtn = document.querySelector(".actions #subscribeBtn");
-  const loginBtn = document.querySelector(".actions #loginBtn");
-
-  if(paymentBtn) {
-    paymentBtn.addEventListener("click", () => {
-      window.location.href = "https://app.visuallottoboard.com/confirmation";
-    })
-  }
-
-  if(loginBtn) {
-    loginBtn.addEventListener("click", () => {
-      window.location.href = "https://app.visuallottoboard.com/";
-    })
-  }
+  document.querySelector("#loginBtn")?.addEventListener("click", () => {
+    window.location.href = "https://app.visuallottoboard.com/";
+  });
 }
 linkButton();
-// const payLink = window.location.href = "https://lottoclassificationchart.visuallottoboard.com";
 
-// Build subnavbar (no Home link on homepage)
-// gameConfigs.forEach(cfg => {
-//   const link = document.createElement('a');
-//   link.href = `/games/${cfg.slug}.html`;
-//   link.textContent = cfg.label;
-//   link.target = "_blank";
-//   nav.appendChild(link);
-// });
-
-
+// 🧠 Step 1: Verify session
 verifySession();
+
 async function verifySession() {
   try {
     const response = await fetch("https://auth.visuallottoboard.com/verifySession", {
@@ -66,35 +45,44 @@ async function verifySession() {
 
     if (response.status === 200) {
       const user = await response.json();
-      console.log("✅ Verified:", user);
-      status.textContent = "Loading results. Please wait...";
-
-      const allResults = await fetchGameResults();
-      console.log("🎯 All Results:", allResults);
-      status.textContent = "";
-
-      gameConfigs.forEach(cfg => {
-        const data = allResults[cfg.key];
-        console.log("🧩 Checking:", cfg.key, "→ Data:", data);
-
-        if(!data) return;
-
-        const section = document.createElement("section");
-        section.classList.add('game-section');
-        section.innerHTML = `<h2>${cfg.label}</h2>`;
-        renderGameResults(cfg.key, data, section);
-        container.appendChild(section);
-      });
+      console.log("✅ Session verified:", user);
+      status.textContent = '✅ You are verified. Loading results...';
+      await loadResults();
     } else {
-        throw new Error("Session not valid");
+      throw new Error("Not verified");
     }
-  } catch (error) {
-    console.warn("Session failed:", error);
-    status.innerHTML = `
-      🤖 Sorry, bot access isn’t allowed.<br>
-      If you're human (and lucky), <a href="https://app.visuallottoboard.com/">sign in here</a> to view results.
-    `;
-    container.innerHTML = "";  
+  } catch (err) {
+    console.warn("Session check failed:", err);
+    showError("🤖 Sorry, bot access isn’t allowed.<br>If you're human, <a href='https://app.visuallottoboard.com'>sign in here</a> to unlock your game results.");
+    container.innerHTML = "";
+  }
+}
+
+// 🧩 Step 2: Fetch and render results
+async function loadResults() {
+  try {
+    const allResults = await fetchGameResults();
+
+    if (!allResults || Object.keys(allResults).length === 0) {
+      showError("⚠️ No results found. Server may be temporarily offline.");
+      return;
+    }
+
+    gameConfigs.forEach(cfg => {
+      const data = allResults[cfg.key];
+      if (!data) return;
+
+      const section = document.createElement('section');
+      section.classList.add('game-section');
+      section.innerHTML = `<h2>${cfg.label}</h2>`;
+      renderGameResults(cfg.key, data, section);
+      container.appendChild(section);
+    });
+
+    status.textContent = '';
+  } catch (err) {
+    console.error("Failed to load results:", err);
+    showError("🚧 We couldn't load the game results due to a server issue or network error. Please try again later.");
   }
 }
 
