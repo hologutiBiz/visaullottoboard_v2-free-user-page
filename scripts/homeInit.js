@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     document.getElementById("updateInfo").innerHTML = `
-      <small sty><strong>📝 ${updateInfo.description}</strong></small> <strong>
-      <time datetime= "${formatted.year}-${formatted.month}-${formatted.day}"><strong>📅 ${formatted}</strong></small>
+      <p><strong>📝 ${updateInfo.description}</strong></p>
+      <p><strong>📅 ${formatted}</strong></p>
      `;
     }
 });
@@ -66,7 +66,6 @@ async function loadResults() {
       container.appendChild(section);
     });
 
-    subnav.style.display = "block";
 
 
     status.textContent = '';
@@ -83,6 +82,6 @@ async function loadResults() {
     }
 
     container.innerHTML = "";
-    if (subnav) subnav.style.display = "none";
+    // if (subnav) subnav.style.display = "none";
   }
 }
