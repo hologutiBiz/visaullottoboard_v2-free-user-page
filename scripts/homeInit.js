@@ -46,7 +46,7 @@ loadResults();
 async function loadResults() {
   try {
     status.textContent = '🔄 Loading latest lotto results...';
-    if (subnav) subnav.style.display = "none";
+    // if (subnav) subnav.style.display = "none";
 
     const allResults = await fetchGameResults();
 
@@ -65,6 +65,9 @@ async function loadResults() {
       renderGameResults(cfg.key, data, section);
       container.appendChild(section);
     });
+
+    subnav.style.display = "block";
+
 
     status.textContent = '';
   } catch (err) {
