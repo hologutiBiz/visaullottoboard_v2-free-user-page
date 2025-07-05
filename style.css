@@ -75,7 +75,7 @@
 .active {
   color: #2282c7;
   text-decoration: none;
-  padding-right: 10px;
+  padding: 0 10px;
   margin: auto 10px;
   border-right: 1px solid #2282c7;
   border-left: 1px solid #2282c7;
@@ -164,16 +164,16 @@
   color: #333;
 }
 
-.update-meta p {
+/* .update-meta p {
   color: #000;
   display: block;
   margin-bottom: 0.5rem;
   font-size: 40px;
-}
+} */
 
-.update-meta strong {
+/* .update-meta strong {
   color: #2282c7;
-}
+} */
 
 
 .game-section {

@@ -9,9 +9,13 @@ const container = document.getElementById('homePageContainer');
 const status = document.getElementById('statusMessage');
 
 document.addEventListener("DOMContentLoaded", async () => {
-  const updateInfo = await getLastUpdateInfo();
-  if (updateInfo) {
-    const date = updateInfo.lastUpdated.toDate();
+  const info = await getLastUpdateInfo();
+console.log("📦 Returned from Firestore:", info);
+  const infoContainer = document.getElementById("infoContainer");
+
+
+  if (info && infoContainer) {
+    const date = info.dateUpdated.toDate();
     const formatted = date.toLocaleString("en-GB", {
       day: "numeric", 
       month: "long", 
@@ -20,10 +24,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       minute: "2-digit"
     });
 
-    document.getElementById("updateInfo").innerHTML = `
-      <p><strong>📝 ${updateInfo.description}</strong></p>
-      <p><strong>📅 ${formatted}</strong></p>
+    infoContainer.innerHTML = `
+      <small>📝 ${info.description}: </small>
+      <time><strong>📅 ${formatted}</strong></time>
      `;
+    } else {
+            console.warn("🚫 UpdateInfo render failed.");
     }
 });
  

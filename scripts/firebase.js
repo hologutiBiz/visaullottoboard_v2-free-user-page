@@ -16,18 +16,15 @@ const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 
 export async function getLastUpdateInfo() {
+   const ref = doc(db, "messages", "lottoResultUpdates");
+
    try {
-      const ref = doc(db, "messages", "lottoResultUpdates");
       const snapshot = await getDoc(ref);
+      const { dateUpdated, description, note, updatedBy } = snapshot.data();
       
-      if (snapshot.exists()) {
-         return snapshot.data();
-      } else {
-        console.warn("ℹ️ No update document found");
-         return null; 
-      }
+      return { dateUpdated, description, note, updatedBy };
    } catch (err) {
-      console.error("🔥 Failed to fetch Firestore document:", err);
+      console.error("🔥 Failed to fetch Firestore document:", err.message || err);
       return null;
    }
 }
