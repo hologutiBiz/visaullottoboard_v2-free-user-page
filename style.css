@@ -164,7 +164,8 @@
   color: #333;
 }
 
-.update-meta p {
+.update-meta small {
+  display: block;
   margin-bottom: 0.5rem;
 }
 

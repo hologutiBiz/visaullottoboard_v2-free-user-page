@@ -2,6 +2,16 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
 import { getFirestore, doc, getDoc } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
+const firebaseConfig = {
+   apiKey: "AIzaSyAe8IWoN0f4hhuzxvQ3aTSGKOzzDVuuvIk",
+   authDomain: "lotto-forecast-web-db.firebaseapp.com",
+   projectId: "lotto-forecast-web-db",
+   storageBucket: "lotto-forecast-web-db.firebasestorage.app",
+   messagingSenderId: "508304327045",
+   appId: "1:508304327045:web:4cb3eaa6e9d01d6afec4ec"
+   // VITE_FIREBASE_MEASUREMENT_ID=G-S4PR6HTNXW
+}
+
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 

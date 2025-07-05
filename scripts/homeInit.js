@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     document.getElementById("updateInfo").innerHTML = `
-      <small><strong>📝 ${data.description}</strong></small> <strong>
+      <small sty><strong>📝 ${updateInfo.description}</strong></small> <strong>
       <time datetime= "${formatted.year}-${formatted.month}-${formatted.day}"><strong>📅 ${formatted}</strong></small>
      `;
     }
