@@ -254,6 +254,10 @@ textarea {
 
 /* On small screens: subnav takes over */
 @media (max-width: 768px) {
+  body {
+    display: flex;
+    flex-direction: column;
+  }
   .home-page-header {
     flex-direction: column;
     margin-bottom: 0;
@@ -284,13 +288,8 @@ textarea {
     height: 100%;
     margin: 0;
     overflow: auto;
-    /* background-color: #eee; */
     background-image: url("https://i.postimg.cc/PqMJr2bW/Visual-Lotto-Board-1.png");
-    /* background-repeat:; */
-    /* background-position: center; */
-    /* background-size: cover; */
-    /* background-attachment: scroll; */
-
+    order: 1;
   }
   .subnav::-webkit-scrollbar {
     width: 6px;
@@ -322,7 +321,6 @@ textarea {
     padding-top: 30px;
     margin: 5rem 2% auto;
     background-color: #0000008a;
-   
   }
   .game-link  {
     flex-direction: column;
