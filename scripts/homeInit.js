@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     infoContainer.innerHTML = `
       <small>📝 ${info.description}: </small>
-      <time><strong>📅 ${formatted}</strong></time>
+      <time><strong>${formatted}</strong></time>
      `;
     } else {
             console.warn("🚫 UpdateInfo render failed.");

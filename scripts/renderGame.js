@@ -44,5 +44,8 @@ export function renderGameResults(gameKey, yearlyData, container) {
     });
 
     container.appendChild(table);
+
+    const span = document.createElement("span");
+    span.textContent = `${gameKey[0]}`;
   });
 }
