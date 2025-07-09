@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       <time><strong>${formatted}</strong></time>
      `;
     } else {
-            console.warn("🚫 UpdateInfo render failed.");
+        console.warn("🚫 UpdateInfo render failed.");
     }
 });
  
