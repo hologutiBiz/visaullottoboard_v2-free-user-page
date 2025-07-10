@@ -28,6 +28,14 @@
          justify-content: center;
          text-align: center;
       }
+
+      .game-page-active-wrapper {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 10px;
+         box-shadow: 2px 2px 4px 2px #ccc;
+         overflow-x: scroll;
+      }
      
    </style>
 </head>
@@ -71,7 +79,7 @@
       </div>
     </header>
 
-    <nav class="subnav" id="subnav"></nav>
+    <nav class="subnav game-page-active-wrapper" id="subnav"></nav>
 
     <div class="status-message" id="statusMessage">Loading Diamond results...</div>
     <main id="gameContainer"></main>
