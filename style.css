@@ -71,16 +71,7 @@
   z-index: 2;
 }
 
-/* ~ ~ Dynamic nav link in Nav-link ~ ~ */
-.active {
-  color: #2282c7;
-  text-decoration: none;
-  padding: 0 10px;
-  margin: auto 10px;
-  border-right: 1px solid #2282c7;
-  border-left: 1px solid #2282c7;
 
-}
 
 .counterpart {
   color: #daa520;
@@ -296,6 +287,31 @@ textarea {
     background-image: url("https://i.postimg.cc/PqMJr2bW/Visual-Lotto-Board-1.png");
     order: 1;
   }
+
+  /* ~ ~ Dynamic nav link in Nav-link ~ ~ */
+ .each-game-active-wrapper {
+    display: flex;
+    overflow-x: scroll;
+    /* padding-bottom: 30px; */
+    gap: 10px;
+
+  }
+  .each-game-active-wrapper .active {
+    position: sticky;
+    top: 10%;
+    left: 0; 
+    right: 0; 
+    text-transform: uppercase;
+    margin: 25px 0 20px;
+    
+  text-decoration: none;
+  padding: 0 10px;
+  color: #2282c7;
+    font-size: 2rem;
+    box-shadow: 2px 2px 4px 2px #eee;
+    order: 1;
+  } 
+
   .subnav::-webkit-scrollbar {
     width: 6px;
   }

@@ -5,7 +5,7 @@ import { showError } from '../../utils/showError.js';
 
 const container = document.getElementById('gameContainer');
 const status = document.getElementById('statusMessage');
-const nav = document.getElementById('subnav');
+const nav = document.querySelector('.each-game-active-wrapper');
 
 // 🧠 Detect game from URL
 const slug = window.location.pathname.split('/').pop().replace('.html', '');
