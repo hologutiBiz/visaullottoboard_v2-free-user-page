@@ -71,8 +71,6 @@
   z-index: 2;
 }
 
-
-
 .counterpart {
   color: #daa520;
   width: fit-content;
@@ -292,11 +290,10 @@ textarea {
  .each-game-active-wrapper {
     display: flex;
     overflow-x: scroll;
-    /* padding-bottom: 30px; */
     gap: 10px;
 
   }
-  .each-game-active-wrapper .active {
+  /* .each-game-active-wrapper .active {
     position: sticky;
     top: 10%;
     left: 0; 
@@ -310,7 +307,7 @@ textarea {
     font-size: 2rem;
     box-shadow: 2px 2px 4px 2px #eee;
     order: 1;
-  } 
+  }  */
 
   .subnav::-webkit-scrollbar {
     width: 6px;
