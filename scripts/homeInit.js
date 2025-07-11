@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     infoContainer.innerHTML = `
       <small>📝 ${info.description}: </small>
-      <time><strong>${formatted}</strong></time>
+      <time>${formatted}</time>
      `;
     } else {
         console.warn("🚫 UpdateInfo render failed.");
@@ -69,6 +69,9 @@ async function loadResults() {
       section.innerHTML = `<h2>${cfg.label}</h2>`;
       renderGameResults(cfg.key, data, section);
       container.appendChild(section);
+
+      const gameName = document.createElement("span");
+      gameName.textContent = `${cfg.label}`;
     });
 
 
