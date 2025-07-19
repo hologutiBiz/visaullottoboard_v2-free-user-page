@@ -1,6 +1,6 @@
 // Your Firebase config
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-import { getFirestore, doc, getDoc } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+import { getFirestore, collection, doc, getDoc, getDocs } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
 const firebaseConfig = {
    apiKey: "AIzaSyAe8IWoN0f4hhuzxvQ3aTSGKOzzDVuuvIk",
@@ -27,6 +27,18 @@ export async function getLastUpdateInfo() {
       console.error("🔥 Failed to fetch Firestore document:", err.message || err);
       return null;
    }
+}
+
+export async function fetchFrequentNumbers() {
+   const colRef = collection(db, "frequentNumbers");
+   
+   try {
+      const snapshot = await getDocs(colRef); 
+      return snapshot;
+   } catch (err) {
+      console.error("🔥 Failed to fetch frequentNumbers:", err.message || err)
+      return null;
+   };
 }
 
 
