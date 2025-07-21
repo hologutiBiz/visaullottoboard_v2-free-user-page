@@ -1,15 +1,20 @@
 import { fetchFrequentNumbers } from "./firebase.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
+  const loading = document.querySelector(".loading");
   const gameSection = document.getElementById("gameSection");
   const gameList = [];
 
+  loading.textContent = "Loading...";
   const snapshot = await fetchFrequentNumbers();
+
   if (!snapshot) {
     gameSection.innerHTML = `<p>🚫 Could not load frequent numbers. Try again later.</p>`;
     return;
   }
 
+  loading.textContent = "";
+  
   snapshot.forEach((doc) => {
     const gameName = doc.id;
     const topNumbers = doc.data().topNumbers;
