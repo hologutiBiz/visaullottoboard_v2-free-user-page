@@ -21,7 +21,7 @@ export const gameConfigs = [
     slug: '4metro',
   },
   {
-    key: 'inter',
+    key: 'international',
     label: 'International',
     slug: '5inter',
   },
