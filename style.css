@@ -143,6 +143,10 @@
   font-size: 16px;
 }
 
+.each-game-active-wrapper a {
+  white-space: nowrap;
+}
+
 
 .home-page-main {
   display: flex;
@@ -167,16 +171,6 @@
   color: #333;
 }
 
-/* .update-meta p {
-  color: #000;
-  display: block;
-  margin-bottom: 0.5rem;
-  font-size: 40px;
-} */
-
-/* .update-meta strong {
-  color: #2282c7;
-} */
 
 
 .game-section {
@@ -341,14 +335,14 @@ textarea {
     font-weight: bold;  
     font-size: 24px;
   }
-.game-link:hover {
-  background-color: #e0e0e0;
-}
-.game-icon {
-  display: block;
-  font-size: 2rem;
-  line-height: 1;
-}
+  .game-link:hover {
+    background-color: #e0e0e0;
+  }
+  .game-icon {
+    display: block;
+    font-size: 2rem;
+    line-height: 1;
+  }
 
   .home-page-main {
     display: none;
