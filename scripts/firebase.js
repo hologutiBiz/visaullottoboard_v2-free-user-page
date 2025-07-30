@@ -2,39 +2,49 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
 import { getFirestore, collection, doc, getDoc, getDocs } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
+
+let app = null;
+let db = null;
+
+// Fetch config and initialize Firebase
 fetch("https://firebase-config-key.netlify.app/.netlify/functions/htmlProject")
    .then(res => res.json())
    .then(config => {
-      firebase.initializeApp(config);
+    app = initializeApp(config);
+    db = getFirestore(app);
+   })
+   .catch(err => {
+    console.error("🔥 Failed to fetch Firebase config:", err.message || err);
    });
 
-const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
-
-export async function getLastUpdateInfo() {
-   const ref = doc(db, "messages", "lottoResultUpdates");
-
-   try {
-      const snapshot = await getDoc(ref);
-      const { dateUpdated, description, note, updatedBy } = snapshot.data();
-      
-      return { dateUpdated, description, note, updatedBy };
-   } catch (err) {
-      console.error("🔥 Failed to fetch Firestore document:", err.message || err);
-      return null;
-   }
+export function getDb() {
+  if (!db) throw new Error("Firestore has not been initialized yet.");
+  return db;
 }
 
+
+export async function getLastUpdateInfo() {
+  try {
+    const ref = doc(getDb(), "messages", "lottoResultUpdates");
+    const snapshot = await getDoc(ref);
+    const { dateUpdated, description, note, updatedBy } = snapshot.data();
+    return { dateUpdated, description, note, updatedBy };
+  } catch (err) {
+    console.error("🔥 Failed to fetch Firestore document:", err.message || err);
+    return null;
+  }
+}
+
+
 export async function fetchFrequentNumbers() {
-   const colRef = collection(db, "frequentNumbers");
-   
-   try {
-      const snapshot = await getDocs(colRef); 
-      return snapshot;
-   } catch (err) {
-      console.error("🔥 Failed to fetch frequentNumbers:", err.message || err)
-      return null;
-   };
+  try {
+    const colRef = collection(getDb(), "frequentNumbers");
+    const snapshot = await getDocs(colRef);
+    return snapshot;
+  } catch (err) {
+    console.error("🔥 Failed to fetch frequentNumbers:", err.message || err);
+    return null;
+  }
 }
 
 
