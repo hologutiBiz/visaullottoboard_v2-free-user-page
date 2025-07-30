@@ -1,4 +1,4 @@
-import { fetchFrequentNumbers } from "./firebase.js";
+import { fetchFrequentNumbers, dbReady } from "./firebase.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const loading = document.querySelector(".loading");
@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const gameList = [];
 
   loading.textContent = "Loading...";
+  await dbReady;
   const snapshot = await fetchFrequentNumbers();
 
   if (!snapshot) {
