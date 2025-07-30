@@ -3,28 +3,34 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/fireba
 import { getFirestore, collection, doc, getDoc, getDocs } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
 
+
 let app = null;
 let db = null;
 
-// Fetch config and initialize Firebase
-fetch("https://firebase-config-key.netlify.app/.netlify/functions/htmlProject")
-   .then(res => res.json())
-   .then(config => {
+// Promise that resolves when Firestore is ready
+export const dbReady = fetch("https://firebase-config-key.netlify.app/.netlify/functions/htmlProject")
+  .then(res => res.json())
+  .then(config => {
     app = initializeApp(config);
     db = getFirestore(app);
-   })
-   .catch(err => {
+    return db;
+  })
+  .catch(err => {
     console.error("🔥 Failed to fetch Firebase config:", err.message || err);
-   });
+    throw err;
+  });
 
+// Usage: await dbReady; then call getDb()
 export function getDb() {
   if (!db) throw new Error("Firestore has not been initialized yet.");
   return db;
 }
 
 
+
 export async function getLastUpdateInfo() {
   try {
+    await dbReady;
     const ref = doc(getDb(), "messages", "lottoResultUpdates");
     const snapshot = await getDoc(ref);
     const { dateUpdated, description, note, updatedBy } = snapshot.data();
@@ -36,8 +42,10 @@ export async function getLastUpdateInfo() {
 }
 
 
+
 export async function fetchFrequentNumbers() {
   try {
+    await dbReady;
     const colRef = collection(getDb(), "frequentNumbers");
     const snapshot = await getDocs(colRef);
     return snapshot;
@@ -49,15 +57,7 @@ export async function fetchFrequentNumbers() {
 
 
 
-  
-// const firebaseConfig = {
-//   apiKey: "AIzaSyAe8IWoN0f4hhuzxvQ3aTSGKOzzDVuuvIk",
-//   authDomain: "lotto-forecast-web-db.firebaseapp.com",
-//   projectId: "lotto-forecast-web-db"
-// }
 
-// const app = initializeApp(firebaseConfig);
-// export const auth = getAuth(app);
 // window.auth = auth;
 
 // Enable persistent login
