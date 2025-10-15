@@ -2,8 +2,6 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
 import { getFirestore, collection, doc, getDoc, getDocs } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
-
-
 let app = null;
 let db = null;
 
@@ -43,17 +41,17 @@ export async function getLastUpdateInfo() {
 
 
 
-export async function fetchFrequentNumbers() {
-  try {
-    await dbReady;
-    const colRef = collection(getDb(), "frequentNumbers");
-    const snapshot = await getDocs(colRef);
-    return snapshot;
-  } catch (err) {
-    console.error("🔥 Failed to fetch frequentNumbers:", err.message || err);
-    return null;
-  }
-}
+// export async function fetchFrequentNumbers() {
+//   try {
+//     await dbReady;
+//     const colRef = collection(getDb(), "frequentNumbers");
+//     const snapshot = await getDocs(colRef);
+//     return snapshot;
+//   } catch (err) {
+//     console.error("🔥 Failed to fetch frequentNumbers:", err.message || err);
+//     return null;
+//   }
+// }
 
 
 
