@@ -60,11 +60,11 @@
    
    
    <header class="home-page-header" id="homePageHeader">
-      <div class="brand">
+      <div class="brand-wrapper">
          <a href="#" aria-current="page">
-            <img src="https://res.cloudinary.com/ddatfadov/image/upload/v1749649983/VLB_logo_gpiyzr.png" alt="Logo" width="40"/>
+            <img class="brand-logo" src="https://res.cloudinary.com/ddatfadov/image/upload/v1749649983/VLB_logo_gpiyzr.png" alt="Logo" width="40"/>
          </a>
-         <h1>Visual Lotto Board</h1>
+         <span class="brand-name">Visual Lotto Board</span>
       </div>
 
       <div class="actions">
@@ -92,7 +92,6 @@
       </div>
    </header>
 
-  
    <nav class="subnav" id="subnav">
       <a  class="counterpart" href="https://lottoclassificationchart.visuallottoboard.com/" target="_blank">
          <p class="counterpart-span">Classification chart</p>
@@ -161,12 +160,12 @@
       </div>
    </nav>
    
+   <h1>Baba Ijebu <span style="color: #ff0000;">(Premier Lotto)</span> Results</h1>
+
    <div class="status-message" id="statusMessage">Loading results. Please wait...</div>
    <div class="update-meta" id="infoContainer"></div>  
 
    <main class="home-page-main" id="homePageContainer"></main>
-
-   <p class="info" style="font-size: 1.5rem; background-color: red; color: white; text-align: center;">We are having issue updating results. Our technical teams are already working to fix this</p>
 
    <div id="reportModal" class="modal hidden">
       <div class="modal-content">
@@ -188,6 +187,9 @@
             <button class="close-modal-btn" id="closeModalBtn">Cancel</button>
          </div>
       </div>
+
+            <!-- <p class="info" style="font-size: 1.5rem; background-color: red; color: white; text-align: center;">We are having issue updating results. Our technical teams are already working to fix this</p> -->
+
    </div>
 
    <script type="module" src="/scripts/homeInit.js"></script>

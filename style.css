@@ -17,15 +17,15 @@
   border-bottom: 1px solid #ddd;
   z-index: 1000;
 }
-.brand {
+.brand-wrapper {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
-.brand img {
+.brand-wrapper img {
   border-radius: 50%;
 }
-.brand h1 {
+.brand-wrapper .brand-name {
   font-weight: 200;
   font-size: 24px;
 }
@@ -124,16 +124,21 @@
 }
 
 
-.scrollTopBtn {
+/* .scrollTopBtn {
   position: fixed;
   bottom: 1.5rem;
   right: 1.5rem;
   background: #333;
-  color: white;
+  color: red;
   border: none;
   border-radius: 4px;
   padding: 0.75rem;
   cursor: pointer;
+} */
+
+h1 {
+  text-align: center;
+  /* font-size: 1.2rem; */
 }
 
 
