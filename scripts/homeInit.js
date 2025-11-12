@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 // 📬 Link buttons
 function linkButton() {
   document.querySelector("#subscribeBtn")?.addEventListener("click", () => {
-    window.location.href = "https://app.visuallottoboard.com/confirmation";
+    window.location.href = "https://app.visuallottoboard.com/subscription";
   });
 
   document.querySelector("#loginBtn")?.addEventListener("click", () => {
