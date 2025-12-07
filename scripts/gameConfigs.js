@@ -32,7 +32,7 @@ export const gameConfigs = [
   },
   {
     key: '06',
-    label: '06',
+    label: 'O6',
     slug: '7O6',
   },
   {
@@ -42,7 +42,7 @@ export const gameConfigs = [
   },
   {
     key: 'clubmaster',
-    label: 'Clubmaster',
+    label: 'Club master',
     slug: '9clubmaster',
   },
   {
