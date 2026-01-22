@@ -85,7 +85,8 @@
   scroll-snap-type: block mandatory;
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  z-index: 2;
+  z-index: 10;
+  background-color: #fff;
 }
 
 .counterpart {
@@ -252,6 +253,99 @@ textarea {
   text-decoration: underline;
 }
 
+.site-footer {
+        background-color: #222;
+        color: #bbb;
+        padding: 40px 20px 20px;
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        margin-top: 50px;
+        line-height: 1.6;
+        
+    }
+
+    .footer-content {
+        width: 400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+    }
+
+    .footer-section h3 {
+        color: #fff;
+        margin-bottom: 15px;
+        font-size: 1.1rem;
+        border-bottom: 2px solid #2282c7;
+        display: inline-block;
+        padding-bottom: 5px;
+    }
+
+    .footer-section p {
+        font-size: 0.9rem;
+    }
+
+    .footer-links {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-links li {
+        margin-bottom: 10px;
+    }
+
+    .footer-links a {
+        color: #bbb;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+        color: #2282c7;
+    }
+
+    .disclaimer-box {
+        font-size: 0.8rem;
+        background: #2a2a2a;
+        padding: 15px;
+        border-radius: 5px;
+        margin-top: 20px;
+        border-left: 4px solid #2282c7;
+    }
+
+    .footer-bottom {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid #333;
+        font-size: 0.85rem;
+    }
+
+    .eighteen-plus {
+        display: inline-block;
+        background: #2282c7;
+        color: white;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    .app-download-section {
+        margin-top: 15px;
+    }
+
+    .play-store-badge {
+        width: 160px; /* Standard size for badges */
+        height: auto;
+        transition: transform 0.2s ease;
+        display: inline-block;
+    }
+
+    .play-store-badge:hover {
+        transform: scale(1.05); /* Slight pop effect on hover */
+    }
+
 
 /* On small screens: subnav takes over */
 @media (max-width: 768px) {
@@ -354,3 +448,9 @@ textarea {
   }
  
 }
+
+@media (max-width: 600px) {
+        .play-store-badge {
+            width: 140px;
+        }
+    }
