@@ -31,8 +31,8 @@ export const gameConfigs = [
     slug: '6gold',
   },
   {
-    key: '06',
-    label: 'O6',
+    key: 'o6',
+    label: 'o6',
     slug: '7O6',
   },
   {
@@ -41,8 +41,8 @@ export const gameConfigs = [
     slug: '8jackpot',
   },
   {
-    key: 'clubmaster',
-    label: 'Club master',
+    key: 'club master',
+    label: 'Club Master',
     slug: '9clubmaster',
   },
   {
@@ -56,7 +56,7 @@ export const gameConfigs = [
     slug: '11tota',
   },
   {
-    key: 'mark_II',
+    key: 'mark-ii',
     label: 'Mark-II',
     slug: '12mark-II',
   },
@@ -86,12 +86,12 @@ export const gameConfigs = [
     slug: '17royal',
   },
   {
-    key: 'msp',
+    key: 'monday special',
     label: 'Monday Special',
     slug: '18msp',
   },
   {
-    key: 'lucky_G',
+    key: 'lucky-g',
     label: 'Lucky-G',
     slug: '19luckyG',
   },
@@ -111,7 +111,7 @@ export const gameConfigs = [
     slug: '22bonanza',
   },
   {
-    key: 'king',
+    key: 'premier king',
     label: 'Premier King',
     slug: '23premierking',
   },

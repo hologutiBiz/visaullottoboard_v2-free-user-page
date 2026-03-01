@@ -1,36 +1,36 @@
 import { fetchGameResults } from './fetchResults.js';
 import { gameConfigs } from './gameConfigs.js';
 import { renderGameResults } from './renderGame.js';
-import { getLastUpdateInfo, dbReady } from './firebase.js';
+// import { getLastUpdateInfo, dbReady } from './firebase.js';
 import { showError } from '../utils/showError.js';
 
 // const subnav = document.getElementById('subnav');
 const container = document.getElementById('homePageContainer');
 const status = document.getElementById('statusMessage');
 
-document.addEventListener("DOMContentLoaded", async () => {
-    await dbReady;
-    const info = await getLastUpdateInfo();
-    const infoContainer = document.getElementById("infoContainer");
+// document.addEventListener("DOMContentLoaded", async () => {
+//     await dbReady;
+//     const info = await getLastUpdateInfo();
+//     const infoContainer = document.getElementById("infoContainer");
 
-    if (info && infoContainer) {
-          const date = info.dateUpdated.toDate();
-          const formatted = date.toLocaleString("en-GB", {
-              day: "numeric", 
-              month: "long", 
-              year: "numeric",
-              hour: "2-digit", 
-              minute: "2-digit"
-        });
+//     if (info && infoContainer) {
+//           const date = info.dateUpdated.toDate();
+//           const formatted = date.toLocaleString("en-GB", {
+//               day: "numeric", 
+//               month: "long", 
+//               year: "numeric",
+//               hour: "2-digit", 
+//               minute: "2-digit"
+//         });
 
-        infoContainer.innerHTML = `
-            <small>📝 ${info.description}: </small>
-            <time>${formatted}</time>
-        `;
-    } else {
-        console.warn("🚫 UpdateInfo render failed.");
-    }
-});
+//         infoContainer.innerHTML = `
+//             <small>📝 ${info.description}: </small>
+//             <time>${formatted}</time>
+//         `;
+//     } else {
+//         console.warn("🚫 UpdateInfo render failed.");
+//     }
+// });
  
 
 // 📬 Link buttons

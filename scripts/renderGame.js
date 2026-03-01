@@ -1,24 +1,24 @@
 export function renderGameResults(gameKey, yearlyData, container) {
-  const years = Object.keys(yearlyData).sort((a, b) => a - b);
+    const years = Object.keys(yearlyData).sort((a, b) => a - b);
 
   years.forEach(year => {
-    const draws = yearlyData[year];
+      const draws = yearlyData[year];
 
-    const table = document.createElement('table');
-    table.innerHTML = `
-      <caption class="game-year">${year}</caption>
-      <thead>
-        <tr>
-          <th class="serial-num">S/N</th>
-          <th>WEEK</th>
-          <th colspan="5">WINNING</th>
-          <th colspan="5">MACHINE</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    `;
+      const table = document.createElement('table');
+      table.innerHTML = `
+          <caption class="game-year">${year}</caption>
+          <thead>
+              <tr>
+                  <th class="serial-num">S/N</th>
+                  <th>DATE</th>
+                  <th colspan="5">WINNING</th>
+                  <th colspan="5">MACHINE</th>
+              </tr>
+          </thead>
+          <tbody></tbody>
+      `;
 
-    const tbody = table.querySelector('tbody');
+      const tbody = table.querySelector('tbody');
 
     draws.forEach(draw => {
       const winning = draw.winningNumbers
