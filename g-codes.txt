@@ -7,7 +7,6 @@
       <!-- End Google Tag Manager -->
 
 
- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3639147338737274" crossorigin="anonymous"></script>
 
       <!-- Baba-Ijebu_Result_Website -->
          <ins class="adsbygoogle"
