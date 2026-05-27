@@ -1,51 +1,94 @@
 export function renderGameResults(gameKey, yearlyData, container) {
-    const years = Object.keys(yearlyData).sort((a, b) => a - b);
-
-  years.forEach(year => {
-      const draws = yearlyData[year];
-
-      const table = document.createElement('table');
-      table.innerHTML = `
-          <caption class="game-year">${year}</caption>
-          <thead>
-              <tr>
-                  <th class="serial-num">S/N</th>
-                  <th>DATE</th>
-                  <th colspan="5">WINNING</th>
-                  <th colspan="5">MACHINE</th>
-              </tr>
-          </thead>
-          <tbody></tbody>
-      `;
-
-      const tbody = table.querySelector('tbody');
-
-    draws.forEach(draw => {
-      const winning = draw.winningNumbers
-        .map(n => `<td class="winning">${n.number || '—'}</td>`)
-        .join('');
-
-      const machine = draw.machineNumbers
-        .map((n, i) => {
-          const extra = i === 0 ? 'fbm' : '';
-          return `<td class="machine ${extra}">${n.number || '—'}</td>`;
-        })
-        .join('');
-
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td class="serial-num">${draw.serialNumber || '—'}</td>
-        <td class="days"><small>${draw.date || '—'}</small></td>
-        ${winning}
-        ${machine}
-      `;
-
-      tbody.appendChild(row);
+    const years = Object.keys(yearlyData).sort((a, b) => b - a);
+    const currentYear = new Date().getFullYear().toString();
+    
+    // Create year selector wrapper
+    const selectorWrapper = document.createElement('div');
+    selectorWrapper.style.cssText = 'margin: 20px 0; text-align: center; padding: 15px; background: #f5f5f5; border-radius: 5px;';
+    
+    const label = document.createElement('label');
+    label.textContent = 'Select Year: ';
+    label.style.cssText = 'font-weight: bold; margin-right: 10px; font-size: 16px;';
+    
+    const selector = document.createElement('select');
+    selector.id = 'yearSelector';
+    selector.style.cssText = 'padding: 8px 12px; font-size: 14px; border: 2px solid #2282c7; border-radius: 4px; cursor: pointer; background: white;';
+    
+    // Add year options
+    years.forEach(year => {
+        const option = document.createElement('option');
+        option.value = year;
+        option.textContent = year;
+        if (year === currentYear) option.selected = true;
+        selector.appendChild(option);
     });
-
-    container.appendChild(table);
-
-    // const span = document.createElement("span");
-    // span.textContent = `${gameKey[0]}`;
-  });
+    
+    selectorWrapper.appendChild(label);
+    selectorWrapper.appendChild(selector);
+    container.appendChild(selectorWrapper);
+    
+    // Create results container
+    const resultsContainer = document.createElement('div');
+    resultsContainer.id = 'resultsContainer';
+    container.appendChild(resultsContainer);
+    
+    // Function to render selected year
+    function renderYear(selectedYear) {
+        resultsContainer.innerHTML = '';
+        const draws = yearlyData[selectedYear];
+        
+        if (!draws || draws.length === 0) {
+            resultsContainer.innerHTML = `<p style="text-align: center; padding: 20px; color: #666;">No results available for ${selectedYear}</p>`;
+            return;
+        }
+        
+        const table = document.createElement('table');
+        table.innerHTML = `
+            <caption class="game-year">${selectedYear}</caption>
+            <thead>
+                <tr>
+                    <th class="serial-num">S/N</th>
+                    <th>DATE</th>
+                    <th colspan="5">WINNING</th>
+                    <th colspan="5">MACHINE</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        `;
+        
+        const tbody = table.querySelector('tbody');
+        
+        draws.forEach(draw => {
+            const winning = draw.winningNumbers
+                .map(n => `<td class="winning">${n.number || '—'}</td>`)
+                .join('');
+            
+            const machine = draw.machineNumbers
+                .map((n, i) => {
+                    const extra = i === 0 ? 'fbm' : '';
+                    return `<td class="machine ${extra}">${n.number || '—'}</td>`;
+                })
+                .join('');
+            
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td class="serial-num">${draw.serialNumber || '—'}</td>
+                <td class="days"><small>${draw.date || '—'}</small></td>
+                ${winning}
+                ${machine}
+            `;
+            
+            tbody.appendChild(row);
+        });
+        
+        resultsContainer.appendChild(table);
+    }
+    
+    // Render current year on load
+    renderYear(currentYear);
+    
+    // Add event listener for year selection
+    selector.addEventListener('change', (e) => {
+        renderYear(e.target.value);
+    });
 }
