@@ -1,4 +1,43 @@
 window.addEventListener('DOMContentLoaded', () => {
+  // ===== Mobile Menu Toggle =====
+  const menuToggle = document.getElementById('menuToggle');
+  const subnav = document.getElementById('subnav');
+  const headerActions = document.getElementById('headerActions');
+
+  if (menuToggle && subnav) {
+    menuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      subnav.classList.toggle('active');
+      menuToggle.classList.toggle('active');
+    });
+
+    // Close menu when clicking on a game link
+    const gameLinks = subnav.querySelectorAll('.game-link');
+    gameLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        subnav.classList.remove('active');
+        menuToggle.classList.remove('active');
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!subnav.contains(e.target) && !menuToggle.contains(e.target)) {
+        subnav.classList.remove('active');
+        menuToggle.classList.remove('active');
+      }
+    });
+
+    // Close menu on window resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        subnav.classList.remove('active');
+        menuToggle.classList.remove('active');
+      }
+    });
+  }
+
+  // ===== Report Modal =====
   // Open the report modal
   const reportBtn = document.getElementById('reportBtn');
   if (reportBtn) {

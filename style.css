@@ -3,6 +3,18 @@
    padding: 0;
 }
 
+/* Hamburger Menu Toggle */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+}
+
 .home-page-header {
   position: sticky;
   top: 0;
@@ -351,105 +363,219 @@ textarea {
 @media (max-width: 768px) {
   body {
     display: block;
-    /* background-color: #daa520; */
     margin: 0;
     padding: 0;
-    /* flex-direction: column; */
   }
-  .home-page-header {
-    flex-direction: column;
-    margin-bottom: 0;
-    margin-top: 0;
-    /* background-color: #2a2a2a; */
-    
-  }
-  .actions {
+
+  /* Hamburger Menu */
+  .menu-toggle {
     display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .home-page-header {
+    flex-direction: row;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .brand-wrapper {
+    flex: 1;
+    min-width: 150px;
+  }
+
+  .brand-wrapper .brand-name {
+    font-size: 18px;
+  }
+
+  .actions {
+    display: none;
     width: 100%;
-    margin: 20px auto;
+    margin: 10px 0;
+    gap: 0.5rem;
   }
+
+  .actions.active {
+    display: flex;
+  }
+
   .actions button {
-    flex: 1 1 33.333%;
-    background-color: #f5f5dc36;
-    font-weight: bold;
+    flex: 1;
+    padding: 0.4rem 0.5rem;
+    font-size: 0.85rem;
   }
+
+  .green-lotto-link {
+    display: none;
+  }
+
+  /* Mobile Navigation Drawer */
+  .subnav {
+    position: fixed;
+    width: 280px;
+    height: 100vh;
+    top: 0;
+    left: -280px;
+    flex-direction: column;
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+    background-color: #fff;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    z-index: 999;
+    transition: left 0.3s ease;
+  }
+
+  .subnav.active {
+    left: 0;
+  }
+
+  /* Overlay when menu is open */
+  .subnav::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: -1;
+  }
+
+  .subnav.active::before {
+    display: block;
+  }
+
+  .counterpart {
+    color: #daa520;
+    width: fit-content;
+    padding: 8px 10px;
+    margin: 15px auto;
+    background-color: #000;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+
+  .download-btn {
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    margin: 10px;
+    background-color: #2282c7;
+    color: white;
+    border-radius: 5px;
+  }
+
+  .game-links-wrapper {
+    flex-direction: column;
+    padding-bottom: 2rem;
+    gap: 0.5rem;
+    background-color: transparent;
+    width: 100%;
+    height: auto;
+  }
+
+  .game-link {
+    flex-direction: row;
+    color: #222;
+    padding: 0.75rem 1rem;
+    background-color: transparent;
+    border-radius: 0;
+    font-size: 1rem;
+    box-shadow: none;
+    border-bottom: 1px solid #eee;
+  }
+
+  .game-link:hover {
+    background-color: #f0f0f0;
+  }
+
+  .game-icon {
+    font-size: 1.25rem;
+  }
+
+  .green-lotto-link {
+    display: block;
+    margin: 15px;
+    text-align: center;
+  }
+
+  /* Main Content */
+  .home-page-main {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 0;
+    overflow-x: visible;
+    scroll-snap-type: none;
+    gap: 1rem;
+    padding: 1rem;
+    justify-content: center;
+  }
+
+  .game-section {
+    width: 100%;
+    height: auto;
+    flex-basis: 100%;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .status-message {
+    font-size: 0.9rem;
+    padding: 0 1rem;
+  }
+
+  .update-meta {
+    margin: 1rem;
+    padding: 0.75rem 1rem;
+    max-width: none;
+    font-size: 0.9rem;
+  }
+
   .socials {
     display: flex;
     width: 100%;
     justify-content: space-around;
-    align-items: center;
+    padding: 1rem 0;
   }
+
   .socials a {
-      margin: 20px auto; 
-      font-size: 22px;
-  }
-
-  .update-meta {
-    margin: auto auto 0;
-  } 
-  .subnav {
-    position: unset;
-    width: 100%;
-    height: 100%;
     margin: 0;
-    background-image: url("https://i.postimg.cc/PqMJr2bW/Visual-Lotto-Board-1.png");
+    font-size: 1.25rem;
   }
-
-  .subnav::-webkit-scrollbar {
-    width: 6px;
-  }
-  .subnav::-webkit-scrollbar-thumb {
-    border-radius: 3px;
-  }
-  .counterpart.counterpart,
-  .download-btn,
-  .counterpart-icon,
-  .counterpart p,
-  .home-page-main {
-    display: none;
-  
-  }
- 
-  .game-links-wrapper {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    padding-top: 30px;
-    /* margin: 2rem 2% auto; */
-    background-color: #0000008a;
-    /* background-color: #ff0000; */
-    
-  }
-  .game-link  {
-    flex-direction: column;
-    color: #2282c7;
-    width: 10rem;
-    margin: 0;
-    padding: 30px 0;
-    background-color: #fff;
-    border-radius: 5px;
-    font-weight: bold;  
-    font-size: 24px;
-  }
-  .game-link:hover {
-    background-color: #e0e0e0;
-  }
-  .game-icon {
-    display: block;
-    font-size: 2rem;
-    line-height: 1;
-  }
-
-  .home-page-main {
-    display: none;
-  }
- 
 }
 
 @media (max-width: 600px) {
-        .play-store-badge {
-            width: 140px;
-        }
-    }
+  .brand-wrapper .brand-name {
+    font-size: 16px;
+  }
+
+  .actions button {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.25rem;
+  }
+
+  h1 {
+    font-size: 1.25rem;
+  }
+
+  .play-store-badge {
+    width: 140px;
+  }
+
+  .home-page-header {
+    padding: 0.5rem;
+  }
+
+  .menu-toggle {
+    font-size: 1.25rem;
+  }
+}

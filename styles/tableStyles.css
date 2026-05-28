@@ -12,12 +12,14 @@ caption {
     background-color: #2282c7;
     font-weight: bold;
     font-size: 20px;
+    padding: 10px 5px;
 }
 
 th{
     background-color: whitesmoke;
     border: 1px solid black;
     padding: 5px;
+    font-size: 13px;
 }
 
 td {
@@ -38,7 +40,6 @@ td {
     border: 1px solid black;
     background-color: whitesmoke;
     font-size: 12px;
-
 }
 
 .xMas-tree {
@@ -55,27 +56,26 @@ td {
 
 .fbm {
     border-left: 1px solid red;
-
 }
 
 .winning {
     color: blue;
     text-align: center;
     font-size: 20px;
+    font-weight: bold;
 }
 .machine {
     color: red;
     text-align: center;
     font-size: 20px;
+    font-weight: bold;
 }
-
 
 .end-of-the-year {
     color: #0303c6;
     text-align: center;
     font-weight: bold;
 }
-
 
 .happyNewYear {
     color: #fff;
@@ -86,10 +86,12 @@ td {
     font-size: 20px;
     background-color: #000;
 }
+
 .symbol {
     margin: auto 5px;
     font-size: large;
 }
+
 .year-twoFour{
     text-align: center;
     padding: 20px;
@@ -98,56 +100,99 @@ td {
 } 
 
 .correction {
-    background-color:rgb(225, 241, 241);
+    background-color: rgb(225, 241, 241);
 }
 
+/* Mobile Responsive Tables */
+@media screen and (max-width: 768px) {
+    table {
+        width: 100%;
+        max-width: 100%;
+        margin: 20px 0;
+        font-size: 0.9rem;
+        overflow-x: auto;
+        display: block;
+    }
 
+    caption {
+        font-size: 16px;
+        padding: 8px 5px;
+    }
 
-                      /* Breakpoints */
-     /*(400-430px device)*/  
-     @media screen and (max-width: 430px) {
-        body {
-            width: 100%;
-        }
-        
-        table {
-            width: 400px;
-            margin-block-start: 40px;
-        }
-        .serial-num {
-            width: 20px;
-            font-size: 8px;
-        }
-        .days {
-            width: 10px;
-            font-size: 10px;
-        }
-        .winning,
-        .machine {
-            font-size: 16.5px;
-        } 
-     }
+    th {
+        font-size: 11px;
+        padding: 4px 2px;
+    }
 
+    td {
+        padding: 4px 2px;
+        font-size: 0.85rem;
+    }
 
-     /*(360-393px device)*/  
-     @media screen and (max-width: 393px) {
-        body {
-            width: 100%;
-        }
-        
-        table {
-            width: 350px;
-            margin-block-start: 25px;
-        }
-        .year {
-            font-weight: bold;
-            font-size: 16px;
-        }
-        .serial-num {
-            width: 15px;
-        }
-        .winning,
-        .machine {
+    .serial-num {
+        width: 20px;
+        font-size: 10px;
+        padding: 3px 1px;
+    }
+
+    .days {
+        width: 25px;
+        font-size: 10px;
+    }
+
+    .winning,
+    .machine {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    table {
+        width: 100%;
+        font-size: 0.75rem;
+        margin: 15px 0;
+    }
+
+    caption {
+        font-size: 14px;
+        padding: 6px 4px;
+    }
+
+    th {
+        font-size: 9px;
+        padding: 3px 1px;
+    }
+
+    td {
+        padding: 3px 1px;
+        font-size: 0.75rem;
+    }
+
+    .serial-num {
+        width: 18px;
+        font-size: 8px;
+    }
+
+    .days {
+        width: 22px;
+        font-size: 8px;
+    }
+
+    .winning,
+    .machine {
+        font-size: 14px;
+    }
+
+    .year-twoFour {
+        padding: 10px;
+        font-size: 1rem;
+    }
+
+    .happyNewYear {
+        font-size: 14px;
+        word-spacing: 5px;
+    }
+}
             font-size: 15px;
         } 
      }
